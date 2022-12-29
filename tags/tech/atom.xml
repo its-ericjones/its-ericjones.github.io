@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tech on Eric Jones</title>
+    <link>https://its-ericjones.github.io/tags/tech/</link>
+    <description>Recent content in tech on Eric Jones</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://its-ericjones.github.io/tags/tech/atom.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creation of This Website and How It’s Being Hosted</title>
+      <link>https://its-ericjones.github.io/posts/creation-of-this-website-and-how-its-being-hosted/</link>
+      <pubDate>Wed, 14 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://its-ericjones.github.io/posts/creation-of-this-website-and-how-its-being-hosted/</guid>
+      <description>Creation At first I was really into the idea of creating this website by hand only using HTML and CSS. As I began to work I soon realized that even though this approach is good for overall development (pun intended), I just don&amp;rsquo;t have the bandwidth to devote this much time to it. My main priority is to continue working on my automation and Python skills as well as writing content to publish online.</description>
+    </item>
+    
+    <item>
+      <title>Miscellaneous SysAdmin Guide</title>
+      <link>https://its-ericjones.github.io/posts/miscellaneous-sysadmin-guide/</link>
+      <pubDate>Sun, 17 Jul 2022 19:41:04 -0700</pubDate>
+      
+      <guid>https://its-ericjones.github.io/posts/miscellaneous-sysadmin-guide/</guid>
+      <description>Jump to Specific Topic: Mounting External Hard Drive Mounting a SMB Share in Ubuntu Setting Up Samba SSH Keys Plex Server Installation and Backup (Linux) Configuring Plex Inside Docker (Ubuntu Jammy) Mounting External Hard Drive Plug in hard drive List all block devices with the name, size, file system type, mount location, and Universally Unique Identifier (take note of the UUID as it will be needed later on) - $ sudo lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT,UUID Take note of the name of desired hard drive (name will be listed on far left side - i.</description>
+    </item>
+    
+  </channel>
+</rss>

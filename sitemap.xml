@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://its-ericjones.github.io/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://its-ericjones.github.io/posts/creation-of-this-website-and-how-its-being-hosted/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/posts/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/tags/self-hosted/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/tags/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/tags/tech/</loc>
+    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/posts/miscellaneous-sysadmin-guide/</loc>
+    <lastmod>2022-07-17T19:41:04-07:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/posts/my-computing-journey/</loc>
+    <lastmod>2022-03-29T19:20:25-07:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/tags/personal/</loc>
+    <lastmod>2022-03-29T19:20:25-07:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/resume/</loc>
+    <priority>0</priority>
+  </url>
+</urlset>
