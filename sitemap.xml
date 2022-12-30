@@ -3,22 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://its-ericjones.github.io/</loc>
-    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url><url>
+    <loc>https://its-ericjones.github.io/tags/automation/</loc>
+    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/posts/</loc>
+    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/tags/</loc>
+    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/tags/tech/</loc>
+    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://its-ericjones.github.io/posts/the-magic-of-subler-and-applescript/</loc>
+    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://its-ericjones.github.io/posts/creation-of-this-website-and-how-its-being-hosted/</loc>
     <lastmod>2022-12-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://its-ericjones.github.io/posts/</loc>
-    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://its-ericjones.github.io/tags/self-hosted/</loc>
-    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://its-ericjones.github.io/tags/</loc>
-    <lastmod>2022-12-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://its-ericjones.github.io/tags/tech/</loc>
     <lastmod>2022-12-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://its-ericjones.github.io/posts/miscellaneous-sysadmin-guide/</loc>

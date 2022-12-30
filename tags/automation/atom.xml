@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>automation on Eric Jones</title>
+    <link>https://its-ericjones.github.io/tags/automation/</link>
+    <description>Recent content in automation on Eric Jones</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://its-ericjones.github.io/tags/automation/atom.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Magic of Subler and Applescript</title>
+      <link>https://its-ericjones.github.io/posts/the-magic-of-subler-and-applescript/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://its-ericjones.github.io/posts/the-magic-of-subler-and-applescript/</guid>
+      <description>I&amp;rsquo;ve been in the process of digitizing all my DVDs of movies and tv shows. After I have the files, I like to embed all the relevant metadata into the file itself so I&amp;rsquo;m able to move it to any self hosted media service without having to rely on third party metadata indexers.
+My application of choice for this task is called Subler which allows me to search various databases for metadata, embed that data, optimize for handheld devices, and export.</description>
+    </item>
+    
+  </channel>
+</rss>
