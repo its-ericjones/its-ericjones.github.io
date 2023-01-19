@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Eric Jones - Miscellaneous SysAdmin Guide</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Miscellaneous-SysAdmin-Guide">
+  <meta name="author" content="Eric Jones">
+</head>
+<body>
+	<main>
+  	  <article>
+        <header>
+            <h1 class="section-header">Miscellaneous SysAdmin Guide</h1>
+        </header>
+        <section>
+            <h3 id="jump-to-specific-topic">Jump to Specific Topic:</h3>
+                <ul>
+                    <li><a href="#mounting-external-hard-drive">Mounting External Hard Drive</a></li>
+                    <li><a href="#mounting-a-smb-share-in-ubuntu">Mounting a SMB Share in Ubuntu</a></li>
+                    <li><a href="#setting-up-samba">Setting Up Samba</a></li>
+                    <li><a href="#ssh-keys">SSH Keys</a></li>
+                    <li><a href="#plex-server-installation-and-backup-linux">Plex Server Installation and Backup (Linux)</a></li>
+                    <li><a href="#configuring-plex-inside-docker-ubuntu-jammy">Configuring Plex Inside Docker (Ubuntu Jammy)</a></li>
+                </ul>
+
+            <h2 id="mounting-external-hard-drive">Mounting External Hard Drive</h2>
+                <ol>
+                    <li>Plug in hard drive</li>
+                    <li>List all block devices with the name, size, file system type, mount location, and Universally Unique Identifier (take note of the UUID as it will be needed later on) -
+                        <pre><code>$ sudo lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT,UUID</pre></code></pre>
+                    </li>
+                    <li>Take note of the name of desired hard drive (name will be listed on far left side - i.e. sda2 = /dev/sda2)</li>
+                    <li>Locate the mount location of the external drive -<br/>
+                        <pre><code>$ sudo mount [NAME] [MOUNT LOCATION]</pre></code>
+                    </li>
+                    <li>Check to make sure hard drive is mounted -
+                        <pre><code>$ df -h </pre></code>
+                    </li>
+                </ol>
+
+            <h3 id="enabling-external-hard-drive-mount-upon-reboot">Enabling External Hard Drive Mount Upon Reboot</h3>
+                <ol>
+                    <li>Edit filesystem table -
+                        <pre><code>$ sudo nano -Bw /etc/fstab</pre></code>
+                    </li>
+                    <li>Below last PARTUUID entry -
+                        <pre><code>$ UUID=[INSERT UUID] /mnt/USB auto defaults,user,nofail 0 2</pre></code>
+                    </li>
+                    <li>Press <code>^X</code> to exit, <code>Y</code> to save changes, and <code>Enter</code> to confirm</li>
+                    <li>Make sure that hard drive will mount upon startup -
+                        <pre><code>$ sudo reboot</pre></code>
+                    </li>
+                </ol>
+
+            <h2 id="mounting-a-smb-share-in-ubuntu">Mounting a SMB Share in Ubuntu</h2>
+                <p><em>This can either be done remotely via SSH from your local machine or directly on the server itself.</em></p>
+                <ol>
+                    <li>Update packages -
+                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</pre></code>
+                    </li>
+                    <li>Install CIFS Utilities -
+                        <pre><code>$ sudo apt-get install cifs-utils -y</pre></code>
+                    </li>
+                    <li>Create directories where you want network shares to mount (ex: /media/nas) -
+                        <pre><code>$ mkdir media/nas</pre></code>
+                    </li>
+                    <li>In home folder (/home/user) create a new text file inside a directory called <code>smb</code> that will contain the username and password of the network share -
+                        <pre><code>$ nano smb/.smbcredentials</pre></code>
+                    </li>
+                    <li>Inside text file -
+                        <pre><code>
+                            username=[username-of-server] 
+                            <br>
+                            password=[password-of-server]
+                        </pre></code>
+                    </li>
+                    <li>Edit filesystem table -
+                        <pre><code>$ sudo nano -Bw /etc/fstab</pre></code>
+                    </li>
+                    <li>Append the following at the bottom of the file -
+                        <pre><code>//SERVER-IP/name-of-share /path-to-mount-location cifs credentials=/path/to/credentials/.smbcredentials,vers=3.0,uid=1000,gid=1000 0 0 </pre></code>
+                    </li>
+                    <li>Mount SMB share type
+                        <pre><code>$ sudo mount -a</pre></code>
+                    </li>
+                </ol>
+
+            <h2 id="setting-up-samba">Setting Up Samba</h2>
+                <p><em>A Samba file server enables file sharing across different operating systems over a network.</em></p>
+                <h3 id="samba-installation">Samba Installation</h3>
+                    <pre><code>$ sudo apt-get install samba samba-common-bin</pre></code>
+                <h3 id="samba-share-configuration">Samba Share Configuration</h3>
+                    <ol>
+                        <li>Edit smb configuration file -
+                            <pre><code>$ sudo nano /etc/samba/smb.conf</pre></code>
+                        </li>
+                        <li>At the bottom of the file -
+                            <pre><code>
+                            [INSERT LABEL OF HARD DRIVE] 
+                            <br>
+                            comment = LABEL OF HARD DRIVE 
+                            <br>
+                            public = no 
+                            <br>
+                            writeable = yes 
+                            <br>
+                            browsable = yes 
+                            <br>
+                            path = /path-to-mount-point 
+                            <br>
+                            create mask = 0777 
+                            <br>
+                            directory mask = 0777 
+                            <br>
+                            only guest = no 
+                            </pre></code>
+                        </li>
+                        <li>Require a login for server connection -
+                            <pre><code>$ sudo smbpasswd -a pi</pre></code>
+                        </li>
+                    </ol>
+
+            <h3 id="connect-to-server-with-login">Connect to Server with Login</h3>
+                <ol>
+                    <li>Have Finder.app active and press <code>Command + K</code></li>
+                    <li>Type <code>smb://[INSERT IP]</code></li>
+                    <li>Click <code>Connect</code></li>
+                    <li>Type in <code>pi</code> as username and your previously chosen password</li>
+                    <li>Click on hard drive label to mount the server</li>
+                </ol>
+
+            <h2 id="ssh-keys">SSH Keys</h2>
+                <p><em>SSH Keys are stronger than plain text passwords since authentication requires both a private and public key pair.</em></p>
+            
+            <h3 id="creating-a-ssh-key-on-mac">Creating a SSH Key on Mac</h3>
+                <ol>
+                <li>To generate a SSH Key -<br/>
+                    <pre><code>$ ssh-keygen</pre></code>
+                </li>
+                <li>The prompt will ask where you want to store the RSA private and public keys. If you press <code>Enter</code> then both keys will be stored in the <code>.ssh</code> hidden directory.</li>
+                <li>The next prompt will ask if you want to enter a passphrase. I recommend doing this since leaving this blank will allow anyone who gains control of your private key to login to your servers.</li>
+                </ol>
+                <p><code>~/.ssh/id_rsa</code> - this is your private key (DO NOT SHARE THIS).</p>
+                <p><code>~/.ssh/id_rsa.pub</code> - this is your public key which you will be copying over to your server.</p>
+
+            <h3 id="storing-ssh-key-passphrase-in-keychain">Storing SSH Key Passphrase in Keychain</h3>
+                <p><strong>For MacOS Monterey or Later</strong>
+                <pre><code>$ ssh-add --apple-use-keychain ~/.ssh/[your-private-key]</pre></code></p>
+                <p><strong>For MacOS Big Sur or Earlier</strong>
+                <pre><code>$ ssh-add -K ~/.ssh/[your-private-key]</pre></code></p>
+
+            <h2 id="configure-ssh-to-always-use-keychain">Configure SSH To Always Use Keychain</h2>
+                <ol>
+                    <li>Create a config file in .ssh folder -
+                        <pre><code>$ touch config</pre></code>
+                    </li>
+                    <li>Type the following inside the config file
+                        <pre><code>    
+                        Host [name-of-server] 
+                        <br>
+                        HostName [ip-address-of-server] 
+                        <br>
+                        UseKeychain yes 
+                        <br>
+                        AddKeysToAgent yes 
+                        <br>
+                        IdentityFile ~/.ssh/[your-private-key] 
+                        </pre></code>
+                    </li>
+                </ol>
+
+            <h3 id="copying-public-key-to-server">Copying Public Key to Server</h3>
+                <pre><code class="">ssh-copy-id -i ~/.ssh/[your-public-key] user@host</pre></code></pre>
+
+            <h2 id="plex-server-installation-and-backup-linux">Plex Server Installation and Backup (Linux)</h2>
+                <p><em>Plex gives you one place to find and access all the media that matters to you. From personal media on your own server, to free and on-demand Movies & Shows, live TV, podcasts, and web shows, to streaming music, you can enjoy it all in one app, on any device.</em></p>
+
+            <h2 id="plex-media-server-installation">Plex Media Server Installation</h2>
+            <h3 id="adding-plex-package-repository">Adding Plex Package Repository</h3>
+                <ol>
+                    <li>Update and upgrade packages -
+                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</pre></code>
+                    </li>
+                    <li>Installing dependencies and repositories -
+                        <pre><code>
+                        $ sudo apt-get install apt-transport-https
+                        <br> 
+                        $ curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add - 
+                        <br>
+                        $ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list 
+                        <br> 
+                        $ sudo apt-get update 
+                        </pre></code>
+                    </li>
+                </ol>
+
+            <h3 id="installing-plex-media-server-package">Installing Plex Media Server Package</h3>
+                <ol>
+                    <li>Installing plexmediaserver -
+                        <pre><code>$ sudo apt install plexmediaserver</pre></code>
+                    </li>
+                    <li>If this message <code>plexmediaserver.list (Y/I/N/O/D/Z) [default=N] ?</code> appears, type <code>N</code></li>
+                </ol>
+
+            <h3 id="setting-up-plex-server-via-web-browser">Setting up Plex Server via Web Browser</h3>
+                <ol>
+                    <li>In web browser address bar type <code>[YOUR IP]:32400/web</code></li>
+                    <li>Give server a name</li>
+                    <li>Select “Add Library” in left-hand side column</li>
+                    <li>Select desired type of media</li>
+                    <li>When browsing for media click the parent folder that contains the desired media</li>
+                </ol>
+
+            <h2 id="plex-media-server-backup">Plex Media Server Backup</h2>
+
+            <h3 id="about-rsync">About Rsync</h3>
+            <p><em>*The rsync command synchronizes files from a source to a destination, on a local machine or over a secure network connection.*</em></p>
+
+            <p>Rsync Options: r = recursive | a = archive | v = verbose | u = update | P = partial / progress</p>
+
+            <h3 id="about-tar">About Tar</h3>
+            <p><em>*Tar stands for tape archive. It is an archiving file format. The tar command creates, maintains, modifies, and extracts files that are archived in the tar format.*</em></p>
+
+            <p>Tar Options: c = create | z = compress / uncompress | v = verbose | f = use the archive file | x = extract</p>
+
+            <h3 id="plex-media-server-data-directory-location">Plex Media Server Data Directory Location</h3>
+            <p>Location: /var/lib/plexmediaserver/Library/Application\ Support/</p>
+
+            <h3 id="copy-plex-directory-and-create-archived-file">Copy Plex Directory and Create Archived File</h3>
+                <ol>
+                    <li>In main directory -
+                        <pre><code>
+                        $ rsync -ravuP /var/lib/plexmediaserver/Library/Application\ Support/ /home/pi/plex-backup/ 
+                        <br>
+                        $ tar -czvf plexbackup.tar.gz /home/pi/plex-backup/Plex\ Media\ Server/ 
+                        </pre></code>
+                    </li>
+                    <li>Type <code>ls</code> to verify and see 'plexbackup.tar.gz' file</li>
+                </ol>
+
+            <h3 id="copy-tar-file-to-local-machine">Copy Tar File to Local Machine</h3>
+                <pre><code>$ rsync -avuPr [USERNAME]@[IP-ADDRESS]:plexbackup.tar.gz ~/path/of/desired/location</pre></code>
+
+            <h3 id="restoring-backup">Restoring Backup</h3>
+                <pre><code class="">$ cp plexbackup.tar.gz /var/lib/plexmediaserver/Library/Application\ Support/  
+            $ tar -xf plexbackup.tar.gz</pre></code>
+                <ol>
+                    <li>Re-install Plex Media Server application</li>
+                </ol>
+
+            <h2 id="configuring-plex-inside-docker-ubuntu-jammy">Configuring Plex Inside Docker (Ubuntu Jammy)</h2>
+
+            <h2 id="docker-portainer-installation">Docker &amp; Portainer Installation</h2>
+                <ol>
+                    <li>Update system -
+                        <pre><code>$ sudo apt-get update -y</pre></code>
+                    </li>
+                    <li>Install the required dependencies for Docker -
+                        <pre><code>$ sudo apt install apt-transport-https curl gnupg-agent ca-certificates software-properties-common -y</pre></code>
+                    </li>
+                    <li>Add Docker CPG Key -
+                        <pre><code>$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</pre></code>
+                    </li>
+                    <li>Set up Docker repository -
+                        <pre><code>$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"</pre></code>
+                    </li>
+                    <li>Install Docker -
+                        <pre><code>$ sudo apt install docker-ce docker-ce-cli containerd.io -y</pre></code>
+                    </li>
+                    <li>Add current user to Docker group -
+                        <pre><code>
+                        $ sudo usermod -aG docker [user] 
+                        <br>
+                        $ newgrp docker
+                        </pre></code>
+                    </li>
+                    <li>Start and Enable Docker -
+                        <pre><code>$ sudo systemctl start docker && systemctl enable docker</pre></code>
+                    </li>
+                    <li>Create Volume for Portainer -
+                        <pre><code>$ sudo docker volume create portainer-data</pre></code>
+                    </li>
+                    <li>Pull Portainer Image From Docker Hub -
+                        <pre><code>$ sudo docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /srv/portainer:/data portainer/portainer</pre></code>
+                    </li>
+                    <li>To access the web interface of Portainer type <code>[ip-address]:9000</code> into your address bar</li>
+                </ol>
+
+            <h2 id="plex-installation">Plex Installation</h2>
+                <ol>
+                    <li>Install latest version of Plex container -
+                        <pre><code>$ sudo docker pull linuxserver/plex</pre></code>
+                    </li>
+                    <li>Create Plex container (change TZ and path to media as applicable)
+                        <pre><code>
+                        $ sudo docker create \ 
+                        <br>
+                        --name=plex \ 
+                        <br>
+                        --net=host \ 
+                        <br>
+                        --restart=always \ 
+                        <br>
+                        -e VERSION=latest \ 
+                        <br>
+                        -e PUID=1001 -e PGID=1001 \ 
+                        <br>
+                        -e TZ=Europe/London \ 
+                        <br>
+                        -v /home/docker/plex/config:/config \ 
+                        <br>
+                        -v [path-to-tv-shows]:/data/tvshows \ 
+                        <br>
+                        -v [path-to-movies]:/data/movies \ 
+                        <br>
+                        -v /home/docker/plex/transcode:/transcode \ 
+                        <br>
+                        linuxserver/plex 
+                        </pre></code>
+                    </li>
+                    <li>Start Plex container -
+                        <pre><code>$ sudo docker start plex</pre></code>
+                    </li>
+                    <li>Access web interface type <code>[IP-ADDRESS]:32400/web</code> into your address bar</li>
+                </ol>
+        </section>
+        </article>
+    </main>
+<footer>
+    <small>&copy; Eric Jones | End of the page. <a href="/index.html", class="global-footer">Home</a> | <a href="#top", class="global-footer">Back to top &uarr;</a></small>
+</footer>
+</body>
+</html>
