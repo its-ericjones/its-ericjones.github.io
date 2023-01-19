@@ -1,3 +1,3 @@
 # eric-jones.com
 
-This repo contains all the source file for my personal website.
+This repo contains all the source files for my personal website.
