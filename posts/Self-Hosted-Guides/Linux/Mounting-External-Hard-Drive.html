@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Eric Jones - Mounting External Hard Drive</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="mounting-external-hard-drive">
+  <meta name="author" content="Eric Jones">
+</head>
+
+<body>
+	<main>
+  	  <article>
+        <header>
+            <a href="/index.html", class="global-header">Home</a>
+            <h1>Mounting External Hard Drive</h1>
+        </header>
+        <section>
+                <ol>
+                    <li>Plug in hard drive</li>
+                    <li>List all block devices with the name, size, file system type, mount location, and Universally Unique Identifier (take note of the UUID as it will be needed later on) -
+                        <pre><code>$ sudo lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT,UUID</pre></code>
+                    </li>
+                    <li>Take note of the name of desired hard drive (name will be listed on far left side - i.e. sda2 = /dev/sda2)</li>
+                    <li>Locate the mount location of the external drive -<br/>
+                        <pre><code>$ sudo mount [NAME] [MOUNT LOCATION]</pre></code>
+                    </li>
+                    <li>Check to make sure hard drive is mounted -
+                        <pre><code>$ df -h </pre></code>
+                    </li>
+                </ol>
+
+            <h3>Enabling External Hard Drive Mount Upon Reboot</h3>
+                <ol>
+                    <li>Edit filesystem table -
+                        <pre><code>$ sudo nano -Bw /etc/fstab</pre></code>
+                    </li>
+                    <li>Below last PARTUUID entry -
+                        <pre><code>$ UUID=[INSERT UUID] /mnt/USB auto defaults,user,nofail 0 2</pre></code>
+                    </li>
+                    <li>Press <code>^X</code> to exit, <code>Y</code> to save changes, and <code>Enter</code> to confirm</li>
+                    <li>Make sure that hard drive will mount upon startup -
+                        <pre><code>$ sudo reboot</pre></code>
+                    </li>
+                </ol>
+        </section>
+        </article>
+    </main>
+<footer>
+    <small>&copy; Eric Jones | End of the page. <a href="/index.html", class="global-footer">Home</a> | <a href="#top", class="global-footer">Back to top &uarr;</a></small>
+</footer>
+</body>
+</html>
