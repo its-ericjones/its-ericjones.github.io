@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Eric Jones - Setting Up Samba</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="setting-up-samba">
+  <meta name="author" content="Eric Jones">
+</head>
+
+<body>
+	<main>
+  	  <article>
+        <header>
+            <a href="/index.html", class="global-header">Home</a>
+            <h1>Setting Up Samba</h1>
+        </header>
+        <section>
+            <p><em>A Samba file server enables file sharing across different operating systems over a network.</em></p>
+            <h3 id="samba-installation">Samba Installation</h3>
+                <pre><code>$ sudo apt-get install samba samba-common-bin</pre></code>
+            <h3 id="samba-share-configuration">Samba Share Configuration</h3>
+                <ol>
+                    <li>Edit smb configuration file -
+                        <pre><code>$ sudo nano /etc/samba/smb.conf</pre></code>
+                    </li>
+                    <li>At the bottom of the file -
+                        <pre><code>
+                        [INSERT LABEL OF HARD DRIVE] 
+                        <br>
+                        comment = LABEL OF HARD DRIVE 
+                        <br>
+                        public = no 
+                        <br>
+                        writeable = yes 
+                        <br>
+                        browsable = yes 
+                        <br>
+                        path = /path-to-mount-point 
+                        <br>
+                        create mask = 0777 
+                        <br>
+                        directory mask = 0777 
+                        <br>
+                        only guest = no 
+                        </pre></code>
+                    </li>
+                    <li>Require a login for server connection -
+                        <pre><code>$ sudo smbpasswd -a pi</pre></code>
+                    </li>
+                </ol>
+
+        <h3 id="connect-to-server-with-login">Connect to Server with Login</h3>
+            <ol>
+                <li>Have Finder.app active and press <code>Command + K</code></li>
+                <li>Type <code>smb://[INSERT IP]</code></li>
+                <li>Click <code>Connect</code></li>
+                <li>Type in <code>pi</code> as username and your previously chosen password</li>
+                <li>Click on hard drive label to mount the server</li>
+            </ol>
+        </section>
+        </article>
+    </main>
+<footer>
+    <small>&copy; Eric Jones | End of the page. <a href="/index.html", class="global-footer">Home</a> | <a href="#top", class="global-footer">Back to top &uarr;</a></small>
+</footer>
+</body>
+</html>
