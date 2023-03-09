@@ -14,19 +14,29 @@
   	  <article>
         <header>
             <nav>
-                <a href="../../../index.html">Home</a> &#x2022; <a href="../../now.html">Now</a> &#x2022; <a href="../Self-Hosted.html">Self Hosted</a> &#x2022; <a href="../../Thoughts/Thoughts.html">Thoughts</a> &#x2022; <a href="../../Projects/Projects.html">Projects</a>
+                <a href="../../../index.html">Home</a> &#x2022; 
+                <a href="../../now.html">Now</a> &#x2022; 
+                <a href="../Self-Hosted.html">Self Hosted</a> &#x2022; 
+                <a href="../../Thoughts/Thoughts.html">Thoughts</a> &#x2022; 
+                <a href="../../Projects/Projects.html">Projects</a>
             </nav>
             <h1>Plex Server Installation and Backup</h1>
         </header>
         <section>
-            <p><em>Plex gives you one place to find and access all the media that matters to you. From personal media on your own server, to free and on-demand Movies & Shows, live TV, podcasts, and web shows, to streaming music, you can enjoy it all in one app, on any device.</em></p>
-
+            <p><em>Plex gives you one place to find and access all the media that matters 
+            to you. From personal media on your own server, to free and on-demand Movies 
+            & Shows, live TV, podcasts, and web shows, to streaming music, you can enjoy 
+            it all in one app, on any device.</em></p>
+		</section>
+		
+		<section>
             <h2 id="plex-media-server-installation">Plex Media Server Installation</h2>
             <h3 id="adding-plex-package-repository">Adding Plex Package Repository</h3>
                 <ol>
                     <li>Update and upgrade packages -
-                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</pre></code>
+                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</code></pre>
                     </li>
+                    
                     <li>Installing dependencies and repositories -
                         <pre><code>
                         $ sudo apt-get install apt-transport-https
@@ -36,27 +46,39 @@
                         $ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list 
                         <br> 
                         $ sudo apt-get update 
-                        </pre></code>
+                        </code></pre>
                     </li>
                 </ol>
-
+		</section>
+		
+		<section>
             <h3 id="installing-plex-media-server-package">Installing Plex Media Server Package</h3>
                 <ol>
                     <li>Installing plexmediaserver -
-                        <pre><code>$ sudo apt install plexmediaserver</pre></code>
+                        <pre><code>$ sudo apt install plexmediaserver</code></pre>
                     </li>
                     <li>If this message <code>plexmediaserver.list (Y/I/N/O/D/Z) [default=N] ?</code> appears, type <code>N</code></li>
                 </ol>
-
-            <h3 id="setting-up-plex-server-via-web-browser">Setting up Plex Server via Web Browser</h3>
+		</section>
+		
+		<section>
+            <h3 id="setting-up-plex-server-via-web-browser">Setting up Plex Server via 
+            Web Browser</h3>
                 <ol>
                     <li>In web browser address bar type <code>[YOUR IP]:32400/web</code></li>
+                    
                     <li>Give server a name</li>
+                    
                     <li>Select “Add Library” in left-hand side column</li>
+                    
                     <li>Select desired type of media</li>
-                    <li>When browsing for media click the parent folder that contains the desired media</li>
+                    
+                    <li>When browsing for media click the parent folder that contains the 
+                    desired media</li>
                 </ol>
-
+		</section>
+		
+		<section>
             <h2 id="plex-media-server-backup">Plex Media Server Backup</h2>
 
             <h3 id="about-rsync">About Rsync</h3>
@@ -79,17 +101,17 @@
                         $ rsync -ravuP /var/lib/plexmediaserver/Library/Application\ Support/ /home/pi/plex-backup/ 
                         <br>
                         $ tar -czvf plexbackup.tar.gz /home/pi/plex-backup/Plex\ Media\ Server/ 
-                        </pre></code>
+                        </code></pre>
                     </li>
                     <li>Type <code>ls</code> to verify and see 'plexbackup.tar.gz' file</li>
                 </ol>
 
             <h3 id="copy-tar-file-to-local-machine">Copy Tar File to Local Machine</h3>
-                <pre><code>$ rsync -avuPr [USERNAME]@[IP-ADDRESS]:plexbackup.tar.gz ~/path/of/desired/location</pre></code>
+                <pre><code>$ rsync -avuPr [USERNAME]@[IP-ADDRESS]:plexbackup.tar.gz ~/path/of/desired/location</code></pre>
 
             <h3 id="restoring-backup">Restoring Backup</h3>
                 <pre><code class="">$ cp plexbackup.tar.gz /var/lib/plexmediaserver/Library/Application\ Support/  
-            $ tar -xf plexbackup.tar.gz</pre></code>
+            $ tar -xf plexbackup.tar.gz</code></pre>
                 <ol>
                     <li>Re-install Plex Media Server application</li>
                 </ol>
@@ -97,7 +119,11 @@
         </article>
     </main>
 <footer>
-    <small>&copy; Eric Jones | End of the page. <a href="../../../index.html", class="global-footer">Home</a> | <a href="#top", class="global-footer">Back to top &uarr;</a></small>
+    <small>
+    	&copy; Eric Jones &#x2022; End of the page. 
+		<a href="../../../index.html" class="global-footer">Home</a> &#x2022; 
+		<a href="#top" class="global-footer">Back to top &uarr;</a>
+    </small>
 </footer>
 </body>
 </html>
