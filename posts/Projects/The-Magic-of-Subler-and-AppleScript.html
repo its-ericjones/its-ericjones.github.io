@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Eric Jones - My Computing Journey</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The-Magic-of-Subler-and-AppleScript">
+  <meta name="author" content="Eric Jones">
+</head>
+
+<body>
+	<main>
+  	  <article>
+        <header>
+            <nav>
+                <a href="../../../index.html">Home</a> &#x2022; <a href="../../now.html">Now</a> &#x2022; <a href="../Self-Hosted.html">Self Hosted</a> &#x2022; <a href="#">Thoughts</a> &#x2022; <a href="#">Projects</a>
+            </nav>
+            <h1 class="section-header">The Magic of Subler and AppleScript</h1>
+        </header>
+        <section>
+            <p>I’ve been in the process of digitizing all my DVDs of movies and tv shows. After I have the files, I like to embed all the relevant metadata into the file itself so I’m able to move it to any self hosted media service without having to rely on third party metadata indexers.</p>
+            
+            <p>My application of choice for this task is called <a href="https://subler.org/" target="_blank">Subler</a> which allows me to search various databases for metadata, embed that data, optimize for handheld devices, and export.</p>
+            
+            <p>The process of a few movies or shows is fairly straightforward with a couple clicks and export, however when you’re trying to work with an entire tv series you end up having to do the same clicks over and over.</p>
+            
+            <p>This is where automation comes into play. I chose to work with <a href="https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html" target="_blank">AppleScript</a> which is a scripting language created by Apple that “allows users to directly control scriptable Macintosh applications, as well as parts of macOS itself.”</p>
+            
+            <p>I created a script that utilizes emulating keyboard shortcuts for the entire workflow. I came across this amazing <a href="https://eastmanreference.com/complete-list-of-applescript-key-codes" target="_blank">web page</a> created by Christopher Kielty that shows all the corresponding key codes.</p>
+
+            <p>Here’s a look at the final AppleScript file:</p>
+
+            <img src="../../images/subler-tutorial/Script.png" alt="AppleScript screenshot">
+
+            <p>Here’s a preview of the workflow in action:</p>
+
+            <img src="../../images/subler-tutorial/Subler-Script.gif" alt="AppleScript gif">
+
+            <p>This is what the workflow looks like in Subler if you were to execute it manually:</p>
+
+            <ol>
+                <li>Importing Files</li>
+                <img src="../../images/subler-tutorial/Step-2-Import-File.png" alt="AppleScript screenshot">
+
+                <li>Search and Adding Metadata</li>
+                <img src="../../images/subler-tutorial/Step-3-Add-Metadata.png" alt="AppleScript screenshot">
+
+                <li>Adding Artwork</li>
+                <img src="../../images/subler-tutorial/Step-4-Adding-Artwork-2.png" alt="AppleScript screenshot">
+
+                <li>Exporting</li>
+                <img src="../../images/subler-tutorial/Step-5-Exporting.png" alt="AppleScript screenshot">
+            </ol>
+
+            <p>Having the ability to click a single button and have the entire process execute without having to lift a finger makes going through many tv series much more manageable.</p>
+
+            <p><p>The full Subler.scpt file is available for download over on my <a href="https://github.com/its-ericjones/AppleScript/tree/main/Subler" target="_blank">GitHub repo</a>.</p></p>
+        </section>
+        </article>
+    </main>
+<footer>
+    <small>&copy; Eric Jones | End of the page. <a href="/index.html", class="global-footer">Home</a> | <a href="#top", class="global-footer">Back to top &uarr;</a></small>
+</footer>
+</body>
+</html>

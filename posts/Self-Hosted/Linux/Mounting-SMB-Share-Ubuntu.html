@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+  <title>Eric Jones - Mounting SMB Share in Ubuntu</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="mounting-smb-share-in-ubuntu">
+  <meta name="author" content="Eric Jones">
+</head>
+
+<body>
+	<main>
+  	  <article>
+        <header>
+            <nav>
+                <a href="../../../index.html">Home</a> &#x2022; <a href="../../now.html">Now</a> &#x2022; <a href="../Self-Hosted.html">Self Hosted</a> &#x2022; <a href="#">Thoughts</a> &#x2022; <a href="#">Projects</a>
+            </nav>
+            <h1>Mounting SMB Share in Ubuntu</h1>
+        </header>
+        <section>
+            <p><em>This can either be done remotely via SSH from your local machine or directly on the server itself.</em></p>
+                <ol>
+                    <li>Update packages -
+                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</pre></code>
+                    </li>
+                    <li>Install CIFS Utilities -
+                        <pre><code>$ sudo apt-get install cifs-utils -y</pre></code>
+                    </li>
+                    <li>Create directories where you want network shares to mount (ex: /media/nas) -
+                        <pre><code>$ mkdir media/nas</pre></code>
+                    </li>
+                    <li>In home folder (/home/user) create a new text file inside a directory called <code>smb</code> that will contain the username and password of the network share -
+                        <pre><code>$ nano smb/.smbcredentials</pre></code>
+                    </li>
+                    <li>Inside text file -
+                        <pre><code>
+                            username=[username-of-server] 
+                            <br>
+                            password=[password-of-server]
+                        </pre></code>
+                    </li>
+                    <li>Edit filesystem table -
+                        <pre><code>$ sudo nano -Bw /etc/fstab</pre></code>
+                    </li>
+                    <li>Append the following at the bottom of the file -
+                        <pre><code>//SERVER-IP/name-of-share /path-to-mount-location cifs credentials=/path/to/credentials/.smbcredentials,vers=3.0,uid=1000,gid=1000 0 0 </pre></code>
+                    </li>
+                    <li>Mount SMB share type
+                        <pre><code>$ sudo mount -a</pre></code>
+                    </li>
+                </ol>
+        </section>
+        </article>
+    </main>
+<footer>
+    <small>&copy; Eric Jones | End of the page. <a href="/index.html", class="global-footer">Home</a> | <a href="#top", class="global-footer">Back to top &uarr;</a></small>
+</footer>
+</body>
+</html>
