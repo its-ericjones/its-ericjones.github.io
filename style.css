@@ -22,7 +22,9 @@ h1, h2 {
   border-bottom: 2px dotted #222;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Bookman Old Style", Bookman, "Rockwell Bold", Rockwell, Superclarendon, Charter, "Sitka Banner", "Georgia Pro", Georgia, "DejaVu Serif", "Bitstream Vera Serif", "Century Schoolbook L", "Lucida Bright", serif;
+  font-family: "Bookman Old Style", Bookman, "Rockwell Bold", Rockwell, Superclarendon, 
+  Charter, "Sitka Banner", "Georgia Pro", Georgia, "DejaVu Serif", 
+  "Bitstream Vera Serif", "Century Schoolbook L", "Lucida Bright", serif;
   text-align: left;
   font-weight: 900;
   color: #222;
@@ -50,7 +52,8 @@ pre {
 
 code,
 pre {
-  font-family:San Francisco Mono,Monaco,consolas,lucida console,dejavu sans mono,bitstream vera sans mono,monospace;
+  font-family:San Francisco Mono,Monaco,consolas,lucida console,dejavu sans mono,
+  bitstream vera sans mono,monospace;
   font-size:normal;
   font-size:small;
   background: #303030;
