@@ -40,11 +40,11 @@
                     <li>Installing dependencies and repositories -
                         <pre><code>
                         $ sudo apt-get install apt-transport-https
-                        <br> 
+                        <br /> 
                         $ curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add - 
-                        <br>
+                        <br />
                         $ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list 
-                        <br> 
+                        <br /> 
                         $ sudo apt-get update 
                         </code></pre>
                     </li>
@@ -99,7 +99,7 @@
                     <li>In main directory -
                         <pre><code>
                         $ rsync -ravuP /var/lib/plexmediaserver/Library/Application\ Support/ /home/pi/plex-backup/ 
-                        <br>
+                        <br />
                         $ tar -czvf plexbackup.tar.gz /home/pi/plex-backup/Plex\ Media\ Server/ 
                         </code></pre>
                     </li>
