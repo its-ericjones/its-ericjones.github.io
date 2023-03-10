@@ -14,35 +14,56 @@
   	  <article>
         <header>
             <nav>
-                <a href="../../../index.html">Home</a> &#x2022; <a href="../../now.html">Now</a> &#x2022; <a href="../Self-Hosted.html">Self Hosted</a> &#x2022; <a href="../../Thoughts/Thoughts.html">Thoughts</a> &#x2022; <a href="../../Projects/Projects.html">Projects</a>
+                <a href="../../../index.html">Home</a> &#x2022; 
+                <a href="../../now.html">Now</a> &#x2022; 
+                <a href="../Self-Hosted.html">Self Hosted</a> &#x2022; 
+                <a href="../../Thoughts/Thoughts.html">Thoughts</a> &#x2022; 
+                <a href="../../Projects/Projects.html">Projects</a>
             </nav>
             <h1>SSH Keys</h1>
         </header>
         <section>
-            <p><em>SSH Keys are stronger than plain text passwords since authentication requires both a private and public key pair.</em></p>
+            <p><em>SSH Keys are stronger than plain text passwords since authentication 
+            requires both a private and public key pair.</em></p>
             
             <h3 id="creating-a-ssh-key-on-mac">Creating a SSH Key on Mac</h3>
                 <ol>
-                <li>To generate a SSH Key -<br/>
-                    <pre><code>$ ssh-keygen</pre></code>
-                </li>
-                <li>The prompt will ask where you want to store the RSA private and public keys. If you press <code>Enter</code> then both keys will be stored in the <code>.ssh</code> hidden directory.</li>
-                <li>The next prompt will ask if you want to enter a passphrase. I recommend doing this since leaving this blank will allow anyone who gains control of your private key to login to your servers.</li>
+					<li>To generate a SSH Key -<br />
+						<pre><code>$ ssh-keygen</code></pre>
+					</li>
+				
+					<li>The prompt will ask where you want to store the RSA private and 
+					public keys. If you press <code>Enter</code> then both keys will be 
+					stored in the <code>.ssh</code> hidden directory.</li>
+				
+					<li>The next prompt will ask if you want to enter a passphrase. I 
+					recommend doing this since leaving this blank will allow anyone who 
+					gains control of your private key to login to your servers.</li>
                 </ol>
-                <p><code>~/.ssh/id_rsa</code> - this is your private key (DO NOT SHARE THIS).</p>
-                <p><code>~/.ssh/id_rsa.pub</code> - this is your public key which you will be copying over to your server.</p>
-
-            <h3 id="storing-ssh-key-passphrase-in-keychain">Storing SSH Key Passphrase in Keychain</h3>
+                <p><code>~/.ssh/id_rsa</code> - this is your private key (DO NOT SHARE 
+                THIS).</p>
+                
+                <p><code>~/.ssh/id_rsa.pub</code> - this is your public key which you 
+                will be copying over to your server.</p>
+		</section>
+		
+		<section>
+            <h3 id="storing-ssh-key-passphrase-in-keychain">Storing SSH Key Passphrase in 
+            Keychain</h3>
                 <p><strong>For MacOS Monterey or Later</strong>
-                <pre><code>$ ssh-add --apple-use-keychain ~/.ssh/[your-private-key]</pre></code></p>
+                <pre><code>$ ssh-add --apple-use-keychain ~/.ssh/[your-private-key]</code></pre></p>
                 <p><strong>For MacOS Big Sur or Earlier</strong>
-                <pre><code>$ ssh-add -K ~/.ssh/[your-private-key]</pre></code></p>
-
-            <h3 id="configure-ssh-to-always-use-keychain">Configure SSH To Always Use Keychain</h3>
+                <pre><code>$ ssh-add -K ~/.ssh/[your-private-key]</code></pre></p>
+		</section>
+		
+		<section>
+            <h3 id="configure-ssh-to-always-use-keychain">Configure SSH To Always Use 
+            Keychain</h3>
                 <ol>
                     <li>Create a config file in .ssh folder -
-                        <pre><code>$ touch config</pre></code>
+                        <pre><code>$ touch config</code></pre>
                     </li>
+                    
                     <li>Type the following inside the config file
                         <pre><code>    
                         Host [name-of-server] 
@@ -54,17 +75,23 @@
                         AddKeysToAgent yes 
                         <br>
                         IdentityFile ~/.ssh/[your-private-key] 
-                        </pre></code>
+                        </code></pre>
                     </li>
                 </ol>
-
+		</section>
+		
+		<section>
             <h3 id="copying-public-key-to-server">Copying Public Key to Server</h3>
-                <pre><code class="">ssh-copy-id -i ~/.ssh/[your-public-key] user@host</pre></code></pre>
+                <pre><code class="">ssh-copy-id -i ~/.ssh/[your-public-key] user@host</code></pre>
         </section>
         </article>
     </main>
 <footer>
-    <small>&copy; Eric Jones | End of the page. <a href="../../../index.html", class="global-footer">Home</a> | <a href="#top", class="global-footer">Back to top &uarr;</a></small>
+    <small>
+    	&copy; Eric Jones &#x2022; End of the page. 
+		<a href="../../../index.html" class="global-footer">Home</a> &#x2022; 
+		<a href="#top" class="global-footer">Back to top &uarr;</a>
+    </small>
 </footer>
 </body>
 </html>
