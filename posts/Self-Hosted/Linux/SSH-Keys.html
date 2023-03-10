@@ -28,8 +28,8 @@
             
             <h3 id="creating-a-ssh-key-on-mac">Creating a SSH Key on Mac</h3>
                 <ol>
-					<li>To generate a SSH Key -<br />
-						<pre><code>$ ssh-keygen</code></pre>
+					<li>To generate a SSH Key -
+						<pre><code>$ ssh-keygen </code></pre>
 					</li>
 				
 					<li>The prompt will ask where you want to store the RSA private and 
@@ -40,20 +40,28 @@
 					recommend doing this since leaving this blank will allow anyone who 
 					gains control of your private key to login to your servers.</li>
                 </ol>
-                <p><code>~/.ssh/id_rsa</code> - this is your private key (DO NOT SHARE 
-                THIS).</p>
-                
-                <p><code>~/.ssh/id_rsa.pub</code> - this is your public key which you 
-                will be copying over to your server.</p>
+                <p>
+                    <strong>This is your private key (DO NOT SHARE 
+                    THIS) - </strong>
+                    <pre class="paragraph-code"><code>~/.ssh/id_rsa </code></pre>
+                </p>
+                <p>
+                    <strong>This is your public key which you 
+                    will be copying over to your server - </strong>
+                    <pre class="paragraph-code"><code>~/.ssh/id_rsa.pub </code></pre>
+                </p>
 		</section>
 		
 		<section>
-            <h3 id="storing-ssh-key-passphrase-in-keychain">Storing SSH Key Passphrase in 
-            Keychain</h3>
-                <p><strong>For MacOS Monterey or Later</strong>
-                <pre><code>$ ssh-add --apple-use-keychain ~/.ssh/[your-private-key]</code></pre></p>
-                <p><strong>For MacOS Big Sur or Earlier</strong>
-                <pre><code>$ ssh-add -K ~/.ssh/[your-private-key]</code></pre></p>
+            <h3 id="storing-ssh-key-passphrase-in-keychain">Storing SSH Key Passphrase in Keychain</h3>
+                <p>
+                    <strong>For MacOS Monterey or Later - </strong>
+                    <pre class="paragraph-code"><code>$ ssh-add --apple-use-keychain ~/.ssh/[your-private-key] </code></pre>
+                </p>
+                <p>
+                    <strong>For MacOS Big Sur or Earlier - </strong>
+                    <pre class="paragraph-code"><code>$ ssh-add -K ~/.ssh/[your-private-key] </code></pre>
+                </p>
 		</section>
 		
 		<section>
@@ -61,28 +69,25 @@
             Keychain</h3>
                 <ol>
                     <li>Create a config file in .ssh folder -
-                        <pre><code>$ touch config</code></pre>
+                        <pre><code>$ touch config </code></pre>
                     </li>
                     
-                    <li>Type the following inside the config file
-                        <pre><code>    
-                        Host [name-of-server] 
-                        <br />
-                        HostName [ip-address-of-server] 
-                        <br />
-                        UseKeychain yes 
-                        <br />
-                        AddKeysToAgent yes 
-                        <br />
-                        IdentityFile ~/.ssh/[your-private-key] 
-                        </code></pre>
+                    <li>Type the following inside the config file - 
+                        <pre><code>Host [name-of-server] </code></pre>
+                        <pre><code>HostName [ip-address-of-server] </code></pre> 
+                        <pre><code>UseKeychain yes </code></pre> 
+                        <pre><code>AddKeysToAgent yes </code></pre> 
+                        <pre><code>IdentityFile ~/.ssh/[your-private-key] </code></pre> 
                     </li>
                 </ol>
 		</section>
 		
 		<section>
             <h3 id="copying-public-key-to-server">Copying Public Key to Server</h3>
-                <pre><code class="">ssh-copy-id -i ~/.ssh/[your-public-key] user@host</code></pre>
+                <ol>
+                    <li>Type - </li>
+                    <pre><code class="">ssh-copy-id -i ~/.ssh/[your-public-key] user@host </code></pre>
+                </ol>
         </section>
         </article>
     </main>

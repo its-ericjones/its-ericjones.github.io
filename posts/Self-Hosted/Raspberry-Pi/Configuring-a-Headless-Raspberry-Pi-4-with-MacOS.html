@@ -25,20 +25,13 @@
         <section>
           <h2>Preparing the MicroSD Card</h2>
             <p>I personally use a peice of software called 
-            <a href="https://www.balena.io/etcher/" target=_blank>balenaEtcher</a> however
-            you can also use Raspberry Pi's own 
-            <a href="https://www.raspberrypi.com/software/" target=_blank>Imager</a> 
-            software which includes the option to browse compatiable operating systems 
-            and the ability to download them within the application. </p>
-            
+            <a href="https://www.balena.io/etcher/" target=_blank>balenaEtcher</a> however you can also use Raspberry Pi's own 
+            <a href="https://www.raspberrypi.com/software/" target=_blank>Imager</a> software which includes the option to browse compatiable operating systems and the ability to download them within the application. </p>
+            <br>
             <p>My operating system of choice is 
-            <a href="https://www.raspberrypi.com/software/operating-systems/" target=_blank>Raspberry Pi OS Lite</a> 
-            as it is native to the Raspberry Pi and based on Debian which offers a great 
-            deal of support from communities online. </p>
-            
-            <p><em>I prefer to download using a torrent due to speed since the file is 
-            being downloading piece by piece from various servers rather than a single 
-            one.</em></p>
+            <a href="https://www.raspberrypi.com/software/operating-systems/" target=_blank>Raspberry Pi OS Lite</a> as it is native to the Raspberry Pi and based on Debian which offers a great deal of support from communities online. </p>
+            <br>
+            <p><em>I prefer to download using a torrent due to speed since the file is being downloading piece by piece from various servers rather than a single one.</em></p>
         </section>
 
         <section>
@@ -62,11 +55,11 @@
               device again.</li>
               
               <li>Open a new Terminal window and type - 
-                <pre><code>$ cd/Volumes/boot</code></pre>
+                <pre><code>$ cd/Volumes/boot </code></pre>
               </li>
               
               <li>To enable SSH we are going to create a blank ssh file by typing - 
-                <pre><code>$ touch ssh</code></pre>
+                <pre><code>$ touch ssh </code></pre>
               </li>
               
               <li>Type <code>cd</code> to get back to the home directory. You can now 
@@ -90,7 +83,7 @@
           <h2>Connecting via SSH</h2>
             <ol>
               <li>Open up a new Terminal window and type - 
-                <pre><code>$ ping raspberrypi.local</code></pre>
+                <pre><code>$ ping raspberrypi.local </code></pre>
               </li>
               
               <li>You should see the output "PING raspberrypi.local (192.x.x.x)". 
@@ -99,7 +92,7 @@
               type <code>ctl + C</code>).</li>
               
               <li>To start the SSH session type - 
-                <pre><code>$ ssh pi@[INSERT IP]</code></pre>
+                <pre><code>$ ssh pi@[INSERT IP] </code></pre>
               </li>
               
               <li>If you see a warning "authenticity of host can't be established...are 
@@ -116,7 +109,7 @@
               the security of your Raspberry Pi. </p>
                 <ol>
                   <li>Type - 
-                    <pre><code>$ passwd</code></pre>
+                    <pre><code>$ passwd </code></pre>
                   </li>
                   
                   <li>Enter the default password.</li>
@@ -130,13 +123,13 @@
                 <ol>
                   <li>To update all currently installed packages and then upgrade them, 
                   type - 
-                    <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</code></pre>
+                    <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y </code></pre>
                   </li>
                   
                   <li>This last step isn't required but it's a good habit to always reboot 
                   after updating to ensure the changes went into effect (the current 
                   SSH session will terminate automatically). Type - 
-                    <pre><code>$ sudo reboot</code></pre>
+                    <pre><code>$ sudo reboot </code></pre>
                   </li>
                 </ol>
         </section>

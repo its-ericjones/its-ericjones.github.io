@@ -28,18 +28,18 @@
                     <li>List all block devices with the name, size, file system type, 
                     mount location, and Universally Unique Identifier (take note of the 
                     UUID as it will be needed later on) -
-                        <pre><code>$ sudo lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT,UUID</code></pre>
+                        <pre><code>$ sudo lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT,UUID </code></pre>
                     </li>
                     
                     <li>Take note of the name of desired hard drive (name will be listed 
                     on far left side - i.e. sda2 = /dev/sda2)</li>
                     
-                    <li>Locate the mount location of the external drive -<br/ >
-                        <pre><code>$ sudo mount [NAME] [MOUNT LOCATION]</code></pre>
+                    <li>Locate the mount location of the external drive - <br>
+                        <pre><code>$ sudo mount [NAME] [MOUNT LOCATION] </code></pre>
                     </li>
                     
                     <li>Check to make sure hard drive is mounted -
-                        <pre><code>$ df -h</code></pre>
+                        <pre><code>$ df -h </code></pre>
                     </li>
                 </ol>
 		</section>
@@ -48,18 +48,18 @@
             <h3>Enabling External Hard Drive Mount Upon Reboot</h3>
                 <ol>
                     <li>Edit filesystem table -
-                        <pre><code>$ sudo nano -Bw /etc/fstab</code></pre>
+                        <pre><code>$ sudo nano -Bw /etc/fstab </code></pre>
                     </li>
                     
                     <li>Below last PARTUUID entry -
-                        <pre><code>$ UUID=[INSERT UUID] /mnt/USB auto defaults,user,nofail 0 2</code></pre>
+                        <pre><code>$ UUID=[INSERT UUID] /mnt/USB auto defaults,user,nofail 0 2 </code></pre>
                     </li>
                     
                     <li>Press <code>^X</code> to exit, <code>Y</code> to save changes, and
                      <code>Enter</code> to confirm</li>
                      
                     <li>Make sure that hard drive will mount upon startup -
-                        <pre><code>$ sudo reboot</code></pre>
+                        <pre><code>$ sudo reboot </code></pre>
                     </li>
                 </ol>
         </section>

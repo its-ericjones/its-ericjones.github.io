@@ -25,35 +25,29 @@
             <p><em>A Samba file server enables file sharing across different operating 
             systems over a network.</em></p>
             <h3 id="samba-installation">Samba Installation</h3>
-                <pre><code>$ sudo apt-get install samba samba-common-bin</code></pre>
+                <ol>
+                    <li>Type - 
+                        <pre><code>$ sudo apt-get install samba samba-common-bin </code></pre>
+                    </li>
+                </ol>
             <h3 id="samba-share-configuration">Samba Share Configuration</h3>
                 <ol>
                     <li>Edit smb configuration file -
-                        <pre><code>$ sudo nano /etc/samba/smb.conf</code></pre>
+                        <pre><code>$ sudo nano /etc/samba/smb.conf </code></pre>
                     </li>
                     <li>At the bottom of the file -
-                        <pre><code>
-                        [INSERT LABEL OF HARD DRIVE] 
-                        <br />
-                        comment = LABEL OF HARD DRIVE 
-                        <br />
-                        public = no 
-                        <br />
-                        writeable = yes 
-                        <br />
-                        browsable = yes 
-                        <br />
-                        path = /path-to-mount-point 
-                        <br />
-                        create mask = 0777 
-                        <br />
-                        directory mask = 0777 
-                        <br />
-                        only guest = no 
-                        </code></pre>
+                        <pre><code>[INSERT LABEL OF HARD DRIVE] </code></pre>
+                        <pre><code>comment = LABEL OF HARD DRIVE </code></pre>
+                        <pre><code>public = no </code></pre>
+                        <pre><code>writeable = yes </code></pre>
+                        <pre><code>browsable = yes </code></pre>
+                        <pre><code>path = /path-to-mount-point </code></pre>
+                        <pre><code>create mask = 0777 </code></pre>
+                        <pre><code>directory mask = 0777 </code></pre>
+                        <pre><code>only guest = no </code></pre>
                     </li>
                     <li>Require a login for server connection -
-                        <pre><code>$ sudo smbpasswd -a pi</code></pre>
+                        <pre><code>$ sudo smbpasswd -a pi </code></pre>
                     </li>
                 </ol>
 		</section>

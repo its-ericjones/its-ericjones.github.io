@@ -23,47 +23,38 @@
             <h1>Plex Server Installation and Backup</h1>
         </header>
         <section>
-            <p><em>Plex gives you one place to find and access all the media that matters 
-            to you. From personal media on your own server, to free and on-demand Movies 
-            & Shows, live TV, podcasts, and web shows, to streaming music, you can enjoy 
-            it all in one app, on any device.</em></p>
+            <p><em>Plex gives you one place to find and access all the media that matters to you. From personal media on your own server, to free and on-demand Movies & Shows, live TV, podcasts, and web shows, to streaming music, you can enjoy it all in one app, on any device.</em></p>
 		</section>
 		
 		<section>
-            <h2 id="plex-media-server-installation">Plex Media Server Installation</h2>
-            <h3 id="adding-plex-package-repository">Adding Plex Package Repository</h3>
+            <h2>Plex Media Server Installation</h2>
+            <h3>Adding Plex Package Repository</h3>
                 <ol>
                     <li>Update and upgrade packages -
-                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</code></pre>
+                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y </code></pre>
                     </li>
                     
                     <li>Installing dependencies and repositories -
-                        <pre><code>
-                        $ sudo apt-get install apt-transport-https
-                        <br /> 
-                        $ curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add - 
-                        <br />
-                        $ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list 
-                        <br /> 
-                        $ sudo apt-get update 
-                        </code></pre>
+                        <pre><code>$ sudo apt-get install apt-transport-https  </code></pre> 
+                        <pre><code>$ curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -  </code></pre> 
+                        <pre><code>$ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list  </code></pre> 
+                        <pre><code>$ sudo apt-get update  </code></pre> 
                     </li>
                 </ol>
 		</section>
 		
 		<section>
-            <h3 id="installing-plex-media-server-package">Installing Plex Media Server Package</h3>
+            <h3>Installing Plex Media Server Package</h3>
                 <ol>
                     <li>Installing plexmediaserver -
-                        <pre><code>$ sudo apt install plexmediaserver</code></pre>
+                        <pre><code>$ sudo apt install plexmediaserver </code></pre>
                     </li>
                     <li>If this message <code>plexmediaserver.list (Y/I/N/O/D/Z) [default=N] ?</code> appears, type <code>N</code></li>
                 </ol>
 		</section>
 		
 		<section>
-            <h3 id="setting-up-plex-server-via-web-browser">Setting up Plex Server via 
-            Web Browser</h3>
+            <h3>Setting up Plex Server via Web Browser</h3>
                 <ol>
                     <li>In web browser address bar type <code>[YOUR IP]:32400/web</code></li>
                     
@@ -79,39 +70,26 @@
 		</section>
 		
 		<section>
-            <h2 id="plex-media-server-backup">Plex Media Server Backup</h2>
+            <h2>Plex Media Server Backup</h2>
 
-            <h3 id="about-rsync">About Rsync</h3>
-            <p><em>*The rsync command synchronizes files from a source to a destination, on a local machine or over a secure network connection.*</em></p>
-
-            <p>Rsync Options: r = recursive | a = archive | v = verbose | u = update | P = partial / progress</p>
-
-            <h3 id="about-tar">About Tar</h3>
-            <p><em>*Tar stands for tape archive. It is an archiving file format. The tar command creates, maintains, modifies, and extracts files that are archived in the tar format.*</em></p>
-
-            <p>Tar Options: c = create | z = compress / uncompress | v = verbose | f = use the archive file | x = extract</p>
-
-            <h3 id="plex-media-server-data-directory-location">Plex Media Server Data Directory Location</h3>
+            <h3>Plex Media Server Data Directory Location</h3>
             <p>Location: /var/lib/plexmediaserver/Library/Application\ Support/</p>
 
-            <h3 id="copy-plex-directory-and-create-archived-file">Copy Plex Directory and Create Archived File</h3>
+            <h3>Copy Plex Directory and Create Archived File</h3>
                 <ol>
                     <li>In main directory -
-                        <pre><code>
-                        $ rsync -ravuP /var/lib/plexmediaserver/Library/Application\ Support/ /home/pi/plex-backup/ 
-                        <br />
-                        $ tar -czvf plexbackup.tar.gz /home/pi/plex-backup/Plex\ Media\ Server/ 
-                        </code></pre>
+                        <pre><code>$ rsync -ravuP /var/lib/plexmediaserver/Library/Application\ Support/ /home/pi/plex-backup/ </code></pre>
+                        <pre><code>$ tar -czvf plexbackup.tar.gz /home/pi/plex-backup/Plex\ Media\ Server/ </code></pre>
                     </li>
                     <li>Type <code>ls</code> to verify and see 'plexbackup.tar.gz' file</li>
                 </ol>
 
-            <h3 id="copy-tar-file-to-local-machine">Copy Tar File to Local Machine</h3>
-                <pre><code>$ rsync -avuPr [USERNAME]@[IP-ADDRESS]:plexbackup.tar.gz ~/path/of/desired/location</code></pre>
+            <h3>Copy Tar File to Local Machine</h3>
+                <pre class="paragraph-code"><code>$ rsync -avuPr [USERNAME]@[IP-ADDRESS]:plexbackup.tar.gz ~/path/of/desired/location </code></pre>
 
-            <h3 id="restoring-backup">Restoring Backup</h3>
-                <pre><code class="">$ cp plexbackup.tar.gz /var/lib/plexmediaserver/Library/Application\ Support/  
-            $ tar -xf plexbackup.tar.gz</code></pre>
+            <h3>Restoring Backup</h3>
+                <pre class="paragraph-code"><code>$ cp plexbackup.tar.gz /var/lib/plexmediaserver/Library/Application\ Support/  
+            $ tar -xf plexbackup.tar.gz </code></pre>
                 <ol>
                     <li>Re-install Plex Media Server application</li>
                 </ol>

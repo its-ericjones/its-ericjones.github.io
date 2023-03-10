@@ -27,42 +27,39 @@
             directly on the server itself.</em></p>
                 <ol>
                     <li>Update packages -
-                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y</code></pre>
+                        <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y </code></pre>
                     </li>
                     
                     <li>Install CIFS Utilities -
-                        <pre><code>$ sudo apt-get install cifs-utils -y</code></pre>
+                        <pre><code>$ sudo apt-get install cifs-utils -y </code></pre>
                     </li>
                     
                     <li>Create directories where you want network shares to mount 
                     (ex: /media/nas) -
-                        <pre><code>$ mkdir media/nas</code></pre>
+                        <pre><code>$ mkdir media/nas </code></pre>
                     </li>
                     
                     <li>In home folder (/home/user) create a new text file inside a 
                     directory called <code>smb</code> that will contain the username and 
                     password of the network share -
-                        <pre><code>$ nano smb/.smbcredentials</code></pre>
+                        <pre><code>$ nano smb/.smbcredentials </code></pre>
                     </li>
                     
                     <li>Inside text file -
-                        <pre><code>
-                            username=[username-of-server] 
-                            <br />
-                            password=[password-of-server]
-                        </code></pre>
+                        <pre><code>username=[username-of-server] </code></pre>
+                        <pre><code>password=[password-of-server] </code></pre>
                     </li>
                     
                     <li>Edit filesystem table -
-                        <pre><code>$ sudo nano -Bw /etc/fstab</code></pre>
+                        <pre><code>$ sudo nano -Bw /etc/fstab </code></pre>
                     </li>
                     
                     <li>Append the following at the bottom of the file -
-                        <pre><code>//SERVER-IP/name-of-share /path-to-mount-location cifs credentials=/path/to/credentials/.smbcredentials,vers=3.0,uid=1000,gid=1000 0 0 </code></pre>
+                        <pre><code>//SERVER-IP/name-of-share /path-to-mount-location cifs credentials=/path/to/credentials/.smbcredentials,vers=3.0,uid=1000,gid=1000 0 0  </code></pre>
                     </li>
                     
                     <li>Mount SMB share type
-                        <pre><code>$ sudo mount -a</code></pre>
+                        <pre><code>$ sudo mount -a </code></pre>
                     </li>
                 </ol>
         </section>
