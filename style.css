@@ -9,14 +9,13 @@ body {
   margin: 0 auto;
   padding: 1.5em;
   max-width: 850px;
-  background-color: rgb(34, 34, 34);
-  color: rgb(239, 239, 239);
+  background-color: rgb(244, 244, 244);
+  color: rgb(34, 34, 34);
   display: block;
   font-family: SomeType-Mono, monospace;
   font-size: 16px;
   line-height: 31.5px;
 }
-
 
 h1, h2, h3, h4 {
   margin: 1rem 0 1rem 0;
