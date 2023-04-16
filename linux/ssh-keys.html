@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <link rel="icon" href="data:,">
+    <title>Eric Jones - SSH Keys</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<main>
+    <div class="header">
+        <span><a href="/">Eric Jones</a> &gt; SSH Keys</span>
+    </div>
+
+    <article>
+    <hr>
+    <h1>SSH Keys</h1>
+    <section></section>
+        <p>
+            <em>SSH Keys are stronger than plain text passwords since authentication 
+        requires both a private and public key pair.</em>
+        </p>
+        <h2>Creating a SSH Key on Mac</h2>
+        <p>
+            To generate a SSH Key -
+            <pre><code>$ ssh-keygen  </code></pre>
+        </p>
+        <p>
+            The prompt will ask where you want to store the RSA private and 
+            public keys. If you press <code>Enter</code> then both keys will be 
+            stored in the <code>.ssh</code> hidden directory.
+        </p>
+        <p>
+            The next prompt will ask if you want to enter a passphrase. I recommend doing this since leaving this blank will allow anyone who 
+            gains control of your private key to login to your servers.
+        </p>
+        <p>
+            <strong>This is your private key (DO NOT SHARE THIS) -</strong>
+            <pre><code>~/.ssh/id_rsa </code></pre>
+        </p>
+        <p>
+            <strong>This is your public key which you will be copying over to your server -</strong>
+            <pre><code>~/.ssh/id_rsa.pub </code></pre>
+        </p>
+    </section>
+    <section>
+    <h2>Storing SSH Key Passphrase in Keychain</h2>
+        <p>
+            For macOS Monterey or Later -
+            <pre><code>$ ssh-add --apple-use-keychain ~/.ssh/[your-private-key] </code></pre></p>
+            <p>For MacOS Big Sur or Earlier -
+            <pre><code>$ ssh-add -K ~/.ssh/[your-private-key] </code></pre>
+        </p>
+    </section>
+    <section>
+    <h2>Configure SSH To Always Use Keychain</h2>
+    <ol>    
+        <li>
+            Create a config file in .ssh folder -
+            <pre class="align-left"><code>$ touch config </code></pre>
+        </li>
+        <li>
+            Type the following inside the config file - 
+            <pre class="align-left"><code>Host [name-of-server] </code></pre>
+            <pre class="align-left"><code>HostName [ip-address-of-server] </code></pre> 
+            <pre class="align-left"><code>UseKeychain yes </code></pre> 
+            <pre class="align-left"><code>AddKeysToAgent yes </code></pre> 
+            <pre class="align-left"><code>IdentityFile ~/.ssh/[your-private-key] </code></pre>
+        </li>
+    </ol>
+    </section>
+    <section>
+        <h2>Copying Public Key to Server</h3>
+        <ol>
+            <li>Type - </li>
+            <pre class="align-left"><code>ssh-copy-id -i ~/.ssh/[your-public-key] user@host </code></pre>
+        </ol>
+    </section>
+    </article>
+</main>
+</html>
