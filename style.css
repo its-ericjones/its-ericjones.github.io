@@ -28,7 +28,7 @@ h6 {
     --color-txt-highlight: #f5f1ce;
     --color-txt-meta: #888;
     --color-pre-bg: var(--color-gray);
-    --color-code-bg: #ddd;
+    --color-code-bg: var(--color-gray);
     --bq-brightness: brightness(120%);
     --font-size-base: 10px;
     --font-size-XS: 1.1rem;
@@ -57,12 +57,12 @@ body {
     margin: 0 auto;
     padding: 2rem;
     max-width: 40em;
-    font-family: -apple-system-ui-serif, ui-serif, Georgia, "Nimbus Roman No9 L", serif;;
+    font-family: "IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: 1.2rem;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
-    color: #000;
-    background-color: #f5f5f5;
+    color: #fff;
+    background-color: rgb(27, 32, 43);
     margin-bottom: 1em;
     line-height: 1.5;
     text-justify: distribute;
