@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Eric Jones - Configuring a Headless Raspberry Pi 4 with MacOS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Configuring-a-Headless-Raspberry-Pi-4-with-MacOS">
+  <meta name="author" content="Eric Jones">
+</head>
+
+<body>
+	<main>
+  	  <article>
+        <header>
+            <nav>
+              <a href="../../../index.html">Home</a> | 
+              <a href="../../now.html">Now</a> | 
+              <a href="../Self-Hosted.html">Self Hosted</a> | 
+              <a href="../../Thoughts/Thoughts.html">Thoughts</a> | 
+              <a href="../../Projects/Projects.html">Projects</a>
+            </nav>
+            <h1>Configuring a Headless Raspberry Pi 4 with MacOS</h1>
+        </header>
+        <section>
+          <h2>Preparing the MicroSD Card</h2>
+            <p>I personally use a peice of software called 
+            <a href="https://www.balena.io/etcher/" target=_blank>balenaEtcher</a> however you can also use Raspberry Pi's own 
+            <a href="https://www.raspberrypi.com/software/" target=_blank>Imager</a> software which includes the option to browse compatiable operating systems and the ability to download them within the application. </p>
+            <br>
+            <p>My operating system of choice is 
+            <a href="https://www.raspberrypi.com/software/operating-systems/" target=_blank>Raspberry Pi OS Lite</a> as it is native to the Raspberry Pi and based on Debian which offers a great deal of support from communities online. </p>
+            <br>
+            <p><em>I prefer to download using a torrent due to speed since the file is being downloading piece by piece from various servers rather than a single one.</em></p>
+        </section>
+
+        <section>
+          <h3>Flashing the Operating System</h3>
+            <ol>
+              <li>Once Etcher is open you can click on "Flash from file" to choose the 
+              .img file that was downloaded.</li>
+              
+              <li>Click "Select Target" and choose the external media device that you wish
+               to flash the operating system onto.</li>
+               
+              <li>Click "Flash!".</li>
+            </ol>
+        </section>
+
+        <section>
+          <h3>Enabling SSH via Terminal.app</h3>
+            <ol>
+              <li>Since Etcher automatically ejects the external media once it's finished 
+              flashing the operating system, go ahead and plug in your external media 
+              device again.</li>
+              
+              <li>Open a new Terminal window and type - 
+                <pre><code>$ cd/Volumes/boot </code></pre>
+              </li>
+              
+              <li>To enable SSH we are going to create a blank ssh file by typing - 
+                <pre><code>$ touch ssh </code></pre>
+              </li>
+              
+              <li>Type <code>cd</code> to get back to the home directory. You can now 
+              eject the external media device and remove it from your computer.</li>
+			</ol>
+        </section>
+        
+        <section>
+          <h3>Powering Up</h3>
+            <ol>
+              <li>Insert the microSD card into the Raspberry Pi.</li>
+              
+              <li>Connect one end of an ethernet cable to the Raspberry Pi and the other 
+              end to your router.</li>
+              
+              <li>Plug in the power cable to the Raspberry Pi.</li>
+            </ol>
+        </section>
+
+        <section>
+          <h2>Connecting via SSH</h2>
+            <ol>
+              <li>Open up a new Terminal window and type - 
+                <pre><code>$ ping raspberrypi.local </code></pre>
+              </li>
+              
+              <li>You should see the output "PING raspberrypi.local (192.x.x.x)". 
+              The numbers inside the parenthesis that either start with "192" or "10" 
+              will be the IP address of the Raspberry Pi (to stop the continuous ping 
+              type <code>ctl + C</code>).</li>
+              
+              <li>To start the SSH session type - 
+                <pre><code>$ ssh pi@[INSERT IP] </code></pre>
+              </li>
+              
+              <li>If you see a warning "authenticity of host can't be established...are 
+              you sure you want to continue connecting" - type <code>yes</code> 
+              (this is because the SSH client has never encountered the server’s key 
+              fingerprint before).</li>
+              
+              <li>The default password is <code>raspberry</code> (no text will appear but 
+              continue typing - this is a security measure).</li>
+            </ol>
+            
+            <h3>Changing the Default Password</h3>
+              <p>I highly reccommend that you change the default password to increase 
+              the security of your Raspberry Pi. </p>
+                <ol>
+                  <li>Type - 
+                    <pre><code>$ passwd </code></pre>
+                  </li>
+                  
+                  <li>Enter the default password.</li>
+                  
+                  <li>Then type in your new password.</li>
+                </ol>
+                
+            <h3>Updating</h3>
+              <p>It's always a good idea to update your packages periodically.</p>
+              
+                <ol>
+                  <li>To update all currently installed packages and then upgrade them, 
+                  type - 
+                    <pre><code>$ sudo apt-get update && sudo apt-get upgrade -y </code></pre>
+                  </li>
+                  
+                  <li>This last step isn't required but it's a good habit to always reboot 
+                  after updating to ensure the changes went into effect (the current 
+                  SSH session will terminate automatically). Type - 
+                    <pre><code>$ sudo reboot </code></pre>
+                  </li>
+                </ol>
+        </section>
+        </article>
+    </main>
+<footer>
+    <small>
+		&copy; Eric Jones | End of the page. 
+		<a href="../../../index.html" class="global-footer">Home</a> | 
+		<a href="#top" class="global-footer">Back to top &uarr;</a>
+	</small>
+</footer>
+</body>
+</html>
