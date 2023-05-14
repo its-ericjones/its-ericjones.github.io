@@ -13,17 +13,19 @@
 	<main>
   	  <article>
         <header>
-            <nav>
-              <a href="../../../index.html">Home</a> | 
+          <h1>Eric Jones</h1>
+          <nav>
+              <a href="../../index.html">Home</a> | 
               <a href="../../now.html">Now</a> | 
-              <a href="../Self-Hosted.html">Self Hosted</a> | 
-              <a href="../../Thoughts/Thoughts.html">Thoughts</a> | 
-              <a href="../../Projects/Projects.html">Projects</a>
+              <a href="../../posts.html">Posts</a> | 
+              <a href="../../projects.html">Projects</a>
             </nav>
+          <hr>
             <h1>Configuring a Headless Raspberry Pi 4 with MacOS</h1>
+            <small class="sub-date-heading">#Raspberry Pi (01/09/2023)</small>
         </header>
         <section>
-          <h2>Preparing the MicroSD Card</h2>
+          <h2 class="heading">Preparing the MicroSD Card</h2>
             <p>I personally use a peice of software called 
             <a href="https://www.balena.io/etcher/" target=_blank>balenaEtcher</a> however you can also use Raspberry Pi's own 
             <a href="https://www.raspberrypi.com/software/" target=_blank>Imager</a> software which includes the option to browse compatiable operating systems and the ability to download them within the application. </p>
@@ -80,7 +82,7 @@
         </section>
 
         <section>
-          <h2>Connecting via SSH</h2>
+          <h2 class="heading">Connecting via SSH</h2>
             <ol>
               <li>Open up a new Terminal window and type - 
                 <pre><code>$ ping raspberrypi.local </code></pre>
@@ -133,7 +135,7 @@
                   </li>
                 </ol>
         </section>
-        </article>
+        <hr class="hr-bottom">
     </main>
 <footer>
     <small>
