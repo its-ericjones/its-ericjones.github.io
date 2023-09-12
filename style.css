@@ -5,16 +5,25 @@ body {
   line-height: 1.45;
   padding-right: 15px;
   padding-left: 15px;
+  font-size: 18px;
 }
 
 code {
   background: #eee;
   padding: 0.3rem;
   tab-size: 4;
+  font-size: 14px;
 }
 
 pre code {
   display: block;
   overflow-x: auto;
   padding: 0.3rem 0.6rem;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
