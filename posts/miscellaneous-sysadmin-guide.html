@@ -21,6 +21,7 @@
   </header>
   <main>
     <section>
+      <h2>Miscellaneous SysAdmin Guide</h2>
       <h3 id="jump-to-specific-topic">Jump to Specific Topic:</h3>
       <ul>
       <li><a href="#formatting-external-hard-drive">Formatting External Hard Drive</a></li>
@@ -31,7 +32,7 @@
       </ul>
     </section>
     <section>
-      <h2>Formatting External Hard Drive</h2>
+      <h3>Formatting External Hard Drive</h3>
         <p>
           <em>I recommend formatting with the ext4 file system as it is most common on modern Linux systems.</em>
         </p>
@@ -50,7 +51,7 @@
   </section>
   <hr>
   <section>
-    <h2 id="mounting-external-hard-drive">Mounting External Hard Drive</h2>
+    <h3 id="mounting-external-hard-drive">Mounting External Hard Drive</h3>
       <ol>
         <li>Plug in hard drive</li>
         <li>List all block devices with the name, size, file system type, mount location, and Universally Unique Identifier (take note of the UUID as it will be needed later on) -
@@ -79,7 +80,7 @@
     </section>
     <hr>
     <section>
-      <h2 id="mounting-a-smb-share-in-ubuntu">Mounting a SMB Share in Ubuntu</h2>
+      <h3 id="mounting-a-smb-share-in-ubuntu">Mounting a SMB Share in Ubuntu</h3>
         <p><em>This can either be done remotely via SSH from your local machine or directly on the server itself.</em></p>
         
         <ol>
@@ -111,7 +112,7 @@
     </section>
     <hr>
     <section>
-      <h2 id="setting-up-samba">Setting Up Samba</h2>
+      <h3 id="setting-up-samba">Setting Up Samba</h3>
         <p><em>A Samba file server enables file sharing across different operating systems over a network.</em></p>
       <h3 id="samba-installation">Samba Installation</h3>
         <pre class="align-right"><code class="language-bash">$ sudo apt-get install samba samba-common-bin </code></pre>
