@@ -1,0 +1,140 @@
+[
+  
+  {
+    "title": "The Black Hole of Distractions and Configurations",
+    "url": "/posts/black-hole-configurations-distractions/",
+    "categories": "",
+    "tags": "reflections, tech",
+    "date": "2023-10-08 00:00:00 -0700",
+    
+
+
+
+
+
+    
+    "snippet": "I tend to find that if I’m presented with the opportunity to tinker and configure settings rather than just getting down to work, I can easily spend hours doing that and at the end of the day be an...",
+    "content": "I tend to find that if I’m presented with the opportunity to tinker and configure settings rather than just getting down to work, I can easily spend hours doing that and at the end of the day be annoyed that I didn’t actually doing anything productive.I’m now at that point in my “computing life” where I value a workspace that simply works and allows me to get to what actually matters rather than fiddling around endlessly trying to find that “perfect setup”."
+  },
+  
+  {
+    "title": "Capturing Thoughts (Safely) When Driving",
+    "url": "/posts/capturing-thoughts-when-driving/",
+    "categories": "",
+    "tags": "workflows, tech",
+    "date": "2023-10-07 00:00:00 -0700",
+    
+
+
+
+
+
+    
+    "snippet": "When listening to podcasts while I’m driving to work, I often think of things that I want to expand on later. I find that if I don’t capture these thoughts right away then I’m trying to to juggle r...",
+    "content": "When listening to podcasts while I’m driving to work, I often think of things that I want to expand on later. I find that if I don’t capture these thoughts right away then I’m trying to to juggle remembering exactly what I want to act on later while also trying to listen to the remainder of the podcast. This is a pretty poor system because I’m not fully invested in what I’m listening to and therefore there are a lot of moments that I either have to rewind, or I restort to re-listening to part of the podcast at a later time.My solution to this is using the Drafts complication on my Apple Watch to quickly dictate my thoughts after briefly pausing the episode. This then syncs to my iPhone, and with badge notifications on I can know that I have one new draft containing whatever my thoughts were when I was driving. Then later when I have time, I can go into the Drafts app on my iPhone or my Mac and decide what I want to do with that text specifically - whether it’s a potential blog post idea, something that I want to put into Reminders, something I want to email, etc.For longer form thoughts when driving I have a pair of wired lightning EarPods that I plug into my iPhone, and with the iOS 16 update there is no longer a cap on dictation time. This allows me to pause when I need to when dictating. It also helps that speaking into the microphone on the headphones seems considerably more accurate than the Apple Watch microphone."
+  },
+  
+  {
+    "title": "Automating GoodLinks and My Read Later Workflow",
+    "url": "/posts/automating-goodlinks-read-later-workflow/",
+    "categories": "",
+    "tags": "projects, workflows, tech",
+    "date": "2023-05-16 00:00:00 -0700",
+    
+
+
+
+
+
+    
+    "snippet": "I often find articles while I’m at work that I’d like to save for reading later. On my personal devices that’s a pretty simple task - I just use the share extension within Safari to quickly send a ...",
+    "content": "I often find articles while I’m at work that I’d like to save for reading later. On my personal devices that’s a pretty simple task - I just use the share extension within Safari to quickly send a URL to my GoodLinks account.Understandably, I don’t really want to add any of my personal accounts to a company owned computer (let alone we can’t even install non approved apps), so I’ve resorted to emailing myself articles and then manually adding them into GoodLinks from within the Mail app.After a few months of using this workflow I thought to myself, “Hey - I wonder if I can use AppleScript to parse through my email to extract the URLs and then add those links into GoodLinks”. While I found that AppleScript could handle the parsing of my email and gather the links, I noticed that there wasn’t a straightforward way to also add them into GoodLinks. I did discover however, that GoodLinks has built in Apple Shortcuts support to add a new link by reading the contents of the system clipboard.I sat down and started to list out all the steps that I would need to complete in order for my script to work (this script uses a combination of AppleScript and Apple Shortcuts - all inside an Automator workflow).      I set up a rule in Mail.app that took any incoming emails that were sent from my work email address and automatically moves them from my inbox into a dedicated folder called “Read Later”.        Using AppleScript, I told macOS to open Mail.app, navigate to the “Read Later” folder that had been added to my favorites, and select all the messages in that folder.        Using an included action within Automator.app called “Get Selected Mail Messages”, I gathered the selected items and passed them to the proceeding step.    These next few steps loops through the selected items, extracts the URLs, opens a new text file in TextEdit.app, and pastes the URLs into the file.  The script then uses AppleScript to save the newly created text file as “links.txt” into a predetermined location.  Now it’s time to trigger the Apple Shortcut to take care of getting these links from the text file into GoodLinks. One of the ways to trigger a Shortcut is to use a system app called “Shortcuts Events” which lets you run shortcuts from any AppleScript script, without launching the Shortcuts app.      Add URLs From Text File to GoodLinks Shortcut                  The input file path is defined (this directory and file name never changes).                    The text file is split into separate lines so that each URL can be processed on its own.                    A loop is created to parse through each URL and copy each one to the clipboard.                    After a URL is in the clipboard, GoodLinks can then add a new link to its inbox from the system clipboard.                    This loop continues until all the URLs in the text file are added to GoodLinks.                  A shell script is ran that navigates to the “read-later” directory on my local machine and deletes the previously generated text file.        AppleScript is used to close any open TextEdit windows.        Finally AppleScript is used to switch to Mail and delete all messages from “Read Later” folder.  Now all I have to do at the end of the day is simply run this Automator workflow and within seconds have all my desired links in GoodLinks ready to go."
+  },
+  
+  {
+    "title": "AirPods Pro 2",
+    "url": "/posts/airpods-pro-2/",
+    "categories": "",
+    "tags": "initial-impressions, tech",
+    "date": "2023-04-17 00:00:00 -0700",
+    
+
+
+
+
+
+    
+    "snippet": "I’ve lived with the struggle of being overly sensitive to loud noises pretty much my entire life. Recently, I decided to pick up a pair of 2nd generation AirPod Pros. I was hesitant when placing th...",
+    "content": "I’ve lived with the struggle of being overly sensitive to loud noises pretty much my entire life. Recently, I decided to pick up a pair of 2nd generation AirPod Pros. I was hesitant when placing the order, wondering if these were going to be worth the money, but let me tell you… these headphones are one of the best purchases that I’ve made in a long time.I can now walk to work on a busy weekend day and not have to have the anxiety of being overwhelmed with loud ambient noise. A quick press of the stem on the AirPods and the outside world fades out, allowing me to only focus on whatever music or podcast is playing. Surprisingly often, I just walk around with active noise cancellation enabled without any audio playing because having that silence is so wonderful."
+  },
+  
+  {
+    "title": "My Computing Journey",
+    "url": "/posts/my-computing-journey/",
+    "categories": "",
+    "tags": "reflections, tech",
+    "date": "2023-02-05 00:00:00 -0800",
+    
+
+
+
+
+
+    
+    "snippet": "To give a little history, the first computer that I remember using was a PC in the shape of a bread box that ran Windows XP. I would spend hours upon hours after I got out of class in high school c...",
+    "content": "To give a little history, the first computer that I remember using was a PC in the shape of a bread box that ran Windows XP. I would spend hours upon hours after I got out of class in high school chatting with friends, and admittedly crushes, on AOL Instant Messenger happily neglecting whatever homework that was due the following day. After using it for a number of years I was able to begin my entrance into the world of Apple with Titanium PowerBook G4. I remember being struck by the visual interface of OS X 10.4 Tiger that was radically different than Windows XP. Since that point I’ve completely immersed myself into the Apple ecosystem with an iPods, iPhones, and a handful of different desktops and laptops.I never really payed much attention to folks who were using Linux - I always thought it was meant for hackers or real computer whizzes. Then I decided to start using a Raspberry Pi. This little credit card size board completely flipped my perception of what the power of Linux could really do. I can’t tell you the amount of headaches and late nights I spent attempting to set up this little computer as a headless unit so that I could control everything from the command line on my laptop. Over time however, I slowly began to understand how to complete simple tasks such as connecting via SSH, running update commands, mounting external hard drives, setting up a basic file server, etc. My experience with this Raspberry Pi taught me that if I was able to break larger tasks down into smaller ones and really push myself to keep learning, then the anxiety of not being smart enough would melt away and my confidence would continue to grow.The Raspberry Pi also introduced me into the world of self hosting. As greater parts of our lives are being spent online so is our media consumption. Think of all the streaming services that we have access to. I love having the immediate access to moves and tv shows at an instant but recently I’ve begun to think Myself all the physical media that’s been sitting in closets at my house. It’s true I could find the majority of it through streaming services but there was still something Myself it that was bothering me. It almost felt wrong to just abandon media that was my own. I began to digitize all my CDs of music and DVDs of movies and tv shows. I scoured the Internet for guides on how to create my own media server that I could access everything from any device on my home network. I even spoke to some friends and convinced them to create their own media servers using Plex so all of us could share our content. Pretty soon we had our own little private streaming service with hundreds of movies and shows at our fingertips. Most of all - it just felt right to be able to interact with something that I had a part in creating and being able to share that knowledge with people in my life."
+  },
+  
+  {
+    "title": "The Magic of Subler and AppleScript",
+    "url": "/posts/magic-subler-applescript/",
+    "categories": "",
+    "tags": "projects, workflows, tech",
+    "date": "2022-10-13 00:00:00 -0700",
+    
+
+
+
+
+
+    
+    "snippet": "I’ve been in the process of digitizing all my DVDs of movies and tv shows. After I have the files, I like to embed all the relevant metadata into the file itself so I’m able to move it to any self ...",
+    "content": "I’ve been in the process of digitizing all my DVDs of movies and tv shows. After I have the files, I like to embed all the relevant metadata into the file itself so I’m able to move it to any self hosted media service without having to rely on third party metadata indexers.My application of choice for this task is called Subler which allows me to search various databases for metadata, embed that data, optimize for handheld devices, and export.The process of a few movies or shows is fairly straightforward with a couple clicks and export, however when you’re trying to work with an entire tv series you end up having to do the same clicks over and over.This is where automation comes into play. I chose to work with AppleScript which is a scripting language created by Apple that, “allows users to directly control scriptable Macintosh applications, as well as parts of macOS itself.”I created a script that utilizes emulating keyboard shortcuts for the entire workflow. I came across this amazing web page created by Christopher Kielty that shows all the corresponding key codes.Here’s a look at the final AppleScript file:Here’s a preview of the workflow in action:This is what the workflow looks like in Subler if you were to execute it manually:      Importing Files            Search and Adding Metadata            Adding Artwork            Exporting      Having the ability to click a single button and have the entire process execute without having to lift a finger makes going through many tv series much more manageable."
+  },
+  
+  {
+    "title": "Miscellaneous SysAdmin Guide",
+    "url": "/posts/miscellaneous-sysadmin-guide/",
+    "categories": "",
+    "tags": "self-hosted, tech, guides",
+    "date": "2022-07-17 00:00:00 -0700",
+    
+
+
+
+
+
+    
+    "snippet": "Jump to Specific Topic:  Mounting External Hard Drive  Mounting a SMB Share in Ubuntu  Setting Up Samba  SSH Keys  Plex Server Installation and Backup (Linux)  Configuring Plex Inside Docker (Ubunt...",
+    "content": "Jump to Specific Topic:  Mounting External Hard Drive  Mounting a SMB Share in Ubuntu  Setting Up Samba  SSH Keys  Plex Server Installation and Backup (Linux)  Configuring Plex Inside Docker (Ubuntu Jammy)Mounting External Hard Drive  Plug in hard drive  List all block devices with the name, size, file system type, mount location, and Universally Unique Identifier (take note of the UUID as it will be needed later on) -    $ sudo lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT,UUID         Take note of the name of desired hard drive (name will be listed on far left side - i.e. sda2 = /dev/sda2)  Locate the mount location of the external drive -    $ sudo mount [NAME] [MOUNT LOCATION]         Check to make sure hard drive is mounted -    $ df -h       Enabling External Hard Drive Mount Upon Reboot  Edit filesystem table -    $ sudo nano -Bw /etc/fstab         Below last PARTUUID entry -    $ UUID=[INSERT UUID] /mnt/USB auto defaults,user,nofail 0 2         Press ^X to exit, Y to save changes, and Enter to confirm  Make sure that hard drive will mount upon startup -    $ sudo reboot       Mounting a SMB Share in UbuntuThis can either be done remotely via SSH from your local machine or directly on the server itself.  Update packages -     $ sudo apt-get update &amp;&amp; sudo apt-get upgrade -y         Install CIFS Utilities -    $ sudo apt-get install cifs-utils -y         Create directories where you want network shares to mount (ex: /media/nas) -    $ mkdir media/nas         In home folder (/home/user) create a new text file inside a directory called smb that will contain the username and password of the network share -    $ nano smb/.smbcredentials         Inside text file -    username=[username-of-server] password=[password-of-server]         Edit filesystem table -    $ sudo nano -Bw /etc/fstab         Append the following at the bottom of the file -    //SERVER-IP/name-of-share /path-to-mount-location cifs credentials=/path/to/credentials/.smbcredentials,vers=3.0,uid=1000,gid=1000 0 0         Mount SMB share type    $ sudo mount -a       Setting Up SambaA Samba file server enables file sharing across different operating systems over a network.Samba Installation$ sudo apt-get install samba samba-common-bin Samba Share Configuration  Edit smb configuration file -    $ sudo nano /etc/samba/smb.conf         At the bottom of the file -    [INSERT LABEL OF HARD DRIVE] comment = LABEL OF HARD DRIVE public = no writeable = yes browsable = yes path = /path-to-mount-point create mask = 0777 directory mask = 0777 only guest = no         Require a login for server connection -    $ sudo smbpasswd -a pi         Connect to Server with Login    Have Finder.app active and press Command + K  Type smb://[INSERT IP]  Click Connect  Type in pi as username and your previously chosen password  Click on hard drive label to mount the serverSSH KeysSSH Keys are stronger than plain text passwords since authentication requires both a private and public key pair.Creating a SSH Key on Mac  To generate a SSH Key -    $ ssh-keygen         The prompt will ask where you want to store the RSA private and public keys. If you press Enter then both keys will be stored in the .ssh hidden directory.  The next prompt will ask if you want to enter a passphrase. I recommend doing this since leaving this blank will allow anyone who gains control of your private key to login to your servers.~/.ssh/id_rsa - this is your private key (DO NOT SHARE THIS).~/.ssh/id_rsa.pub - this is your public key which you will be copying over to your server.Storing SSH Key Passphrase in KeychainFor MacOS Monterey or Later$ ssh-add --apple-use-keychain ~/.ssh/[your-private-key] For MacOS Big Sur or Earlier$ ssh-add -K ~/.ssh/[your-private-key] Configure SSH To Always Use Keychain  Create a config file in .ssh folder -    $ touch config         Type the following inside the config file    Host [name-of-server] HostName [ip-address-of-server] UseKeychain yes AddKeysToAgent yes IdentityFile ~/.ssh/[your-private-key]       Copying Public Key to Serverssh-copy-id -i ~/.ssh/[your-public-key] user@host Plex Server Installation and Backup (Linux)Plex gives you one place to find and access all the media that matters to you. From personal media on your own server, to free and on-demand Movies &amp; Shows, live TV, podcasts, and web shows, to streaming music, you can enjoy it all in one app, on any device.Plex Media Server InstallationAdding Plex Package Repository  Update and upgrade packages -    $ sudo apt-get update &amp;&amp; sudo apt-get upgrade -y         Installing dependencies and repositories -    $ sudo apt-get install apt-transport-https $ curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add - $ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list  $ sudo apt-get update         Installing Plex Media Server Package    Installing plexmediaserver -    $ sudo apt install plexmediaserver         If this message plexmediaserver.list (Y/I/N/O/D/Z) [default=N] ? appears, type NSetting up Plex Server via Web Browser  In web browser address bar type [YOUR IP]:32400/web  Give server a name  Select “Add Library” in left-hand side column  Select desired type of media  When browsing for media click the parent folder that contains the desired mediaPlex Media Server BackupAbout Rsync*The rsync command synchronizes files from a source to a destination, on a local machine or over a secure network connection.*            Rsync Options: r = recursive      a = archive      v = verbose      u = update      P = partial / progress      About Tar*Tar stands for tape archive. It is an archiving file format. The tar command creates, maintains, modifies, and extracts files that are archived in the tar format.*            Tar Options: c = create      z = compress / uncompress      v = verbose      f = use the archive file      x = extract      Plex Media Server Data Directory LocationLocation: /var/lib/plexmediaserver/Library/Application\\ Support/Copy Plex Directory and Create Archived File  In main directory -    $ rsync -ravuP /var/lib/plexmediaserver/Library/Application\\ Support/ /home/pi/plex-backup/ $ tar -czvf plexbackup.tar.gz /home/pi/plex-backup/Plex\\ Media\\ Server/         Type ls to verify and see ‘plexbackup.tar.gz’ fileCopy Tar File to Local Machine$ rsync -avuPr [USERNAME]@[IP-ADDRESS]:plexbackup.tar.gz ~/path/of/desired/location Restoring Backup$ cp plexbackup.tar.gz /var/lib/plexmediaserver/Library/Application\\ Support/  $ tar -xf plexbackup.tar.gz   Re-install Plex Media Server applicationConfiguring Plex Inside Docker (Ubuntu Jammy)Docker &amp; Portainer Installation  Update system -    $ sudo apt-get update -y         Install the required dependencies for Docker -    $ sudo apt install apt-transport-https curl gnupg-agent ca-certificates software-properties-common -y        Add Docker CPG Key -    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -         Set up Docker repository -    $ sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable\"        Install Docker -    $ sudo apt install docker-ce docker-ce-cli containerd.io -y         Add current user to Docker group -    $ sudo usermod -aG docker [user] $ newgrp docker        Start and Enable Docker -    $ sudo systemctl start docker &amp;&amp; systemctl enable docker         Create Volume for Portainer -    $ sudo docker volume create portainer-data         Pull Portainer Image From Docker Hub -    $ sudo docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /srv/portainer:/data portainer/portainer         To access the web interface of Portainer type [ip-address]:9000 into your address barPlex Installation  Install latest version of Plex container -    $ sudo docker pull linuxserver/plex         Create Plex container (change TZ and path to media as applicable)    $ sudo docker create \\ --name=plex \\ --net=host \\ --restart=always \\ -e VERSION=latest \\ -e PUID=1001 -e PGID=1001 \\ -e TZ=Europe/London \\ -v /home/docker/plex/config:/config \\ -v [path-to-tv-shows]:/data/tvshows \\ -v [path-to-movies]:/data/movies \\ -v /home/docker/plex/transcode:/transcode \\ linuxserver/plex         Start Plex container -    $ sudo docker start plex        Access web interface type [IP-ADDRESS]:32400/web into your address bar"
+  },
+  
+  {
+    "title": "Configuring Raspberry Pi with macOS",
+    "url": "/posts/configuring-raspberry-pi-macos/",
+    "categories": "",
+    "tags": "self-hosted, tech, guides",
+    "date": "2022-04-01 00:00:00 -0700",
+    
+
+
+
+
+
+    
+    "snippet": "Preparing the MicroSD CardI personally use a piece of software called balenaEtcher however you can also use Raspberry Pi’s own Imager software which includes the option to browse compatible operati...",
+    "content": "Preparing the MicroSD CardI personally use a piece of software called balenaEtcher however you can also use Raspberry Pi’s own Imager software which includes the option to browse compatible operating systems and the ability to download them within the application.My operating system of choice is Raspberry Pi OS Lite as it is native to the Raspberry Pi and based on Debian which offers a great deal of support from communities online.I prefer to download using a torrent due to speed since the file is being downloading piece by piece from various servers rather than a single one.Flashing the Operating System  Once Etcher is open you can click on “Flash from file” to choose the .img file that was downloaded.  Click “Select Target” and choose the external media device that you wish to flash the operating system onto.  Click “Flash!”.Enabling SSH via Terminal.app  Since Etcher automatically ejects the external media once it’s finished flashing the operating system, go ahead and plug in your external media device again.  Open a new Terminal window -    $ cd/Volumes/boot         Enable SSH    $ touch ssh         You can now eject the external media device and remove it from your computer.Powering Up  Insert the microSD card into the Raspberry Pi.  Connect one end of an ethernet cable to the Raspberry Pi and the other end to your router.  Plug in the power cable to the Raspberry Pi.Connecting via SSH  Check for server on network -    $ ping raspberrypi.local         You should see the output “PING raspberrypi.local (192.x.x.x)”. The numbers inside the parenthesis that either start with “192” or “10” will be the IP address of the Raspberry Pi (to stop the continuous ping type ctl + C).  Start SSH session -    $ ssh [USERNAME]@[IP-ADDRESS]         If you see a warning “authenticity of host can’t be established…are you sure you want to continue connecting” - type yes (this is because the SSH client has never encountered the server’s key fingerprint before).  The default password is raspberry (no text will appear but continue typing - this is a security measure).I highly recommend that you change the default password to increase the security of your Raspberry Pi.$ passwd   Enter the default password.  Then type in your new password.It’s always a good idea to update your packages periodically.  Update all currently installed packages and then upgrade them -    $ sudo apt-get update &amp;&amp; sudo apt-get upgrade -y         This last step isn’t required but it’s a good habit to always reboot after updating to ensure the changes went into effect (the current SSH session will terminate automatically)    $ sudo reboot       "
+  }
+  
+]
+
