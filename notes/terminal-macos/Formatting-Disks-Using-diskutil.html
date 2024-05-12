@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Jones - Notes - Guides - Terminal (macOS) - Formatting Disks Using diskutil</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+<body>
+    <header>
+      <nav>
+        <a href="../../index.html">Home</a>
+        <a href="../../now.html">Now</a>
+        <a href="../../thoughts.html">Thoughts</a>
+        <a href="../../notes.html" class="current">Notes</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="https://www.instagram.com/its.eric.jones/" target="_blank">Photography</a>
+    </nav>
+        <h1>Notes</h1>
+        <p>A place for my notes for learning in public.</p>
+    </header>
+    <main>
+      <h1>Formatting Disks Using diskutil</h1>
+        <p>Date: May 11, 2024</p>
+        <p>For all the years that I've been using a Mac, I've always formatted internal and external disks using the built in Disk Utility.app. However, a few years ago I discovered that I could achieve the same results but do it all in the command line which - like everything that's new in the beginning - felt more cumbersome but I soon realized how much quicker it was typing rather than clicking a bunch of UI elements. </p>
+        <p>No matter which format that you want your storage to be in, the command syntax is always nearly identical:</p>
+        <pre><code>diskutil eraseDisk [format] [DiskName] /dev/[DiskNodeID]</code></pre>
+        <p><em>diskutil</em> - operates on disk partitions: mounting and unmounting, getting information, renaming, erasing, etc.</p>
+        <p><em>eraseDisk</em> - flag for erasing a disk</p>
+        <p><em>[format]</em> - replace this with the format that you want the disk to be in (see options further down this post)</p>
+        <p><em>[DiskName]</em> - replace this with the desired name of your disk</p>
+        <p><em>/dev/[DiskNodeID]</em> - replace DiskNodeID with the appropriate ID of the disk that you want to format (this can be found on the far left side of the terminal window when listing all drives)</p>
+        <p>An example of this command would be - </p>
+        <pre><code>diskutil eraseDisk JHFS+ EJ-Silver /dev/disk6</code></pre>
+        <img src="../../images/Formatting-Disks-Using-diskutil-Screenshots/terminal-diskutil-eraseDisk-example-screenshot.jpg" alt="">
+        <p>To output a list of all of your internal and external disks you can type the <code>diskutil list</code> command - </p>
+        <img src="../../images/Formatting-Disks-Using-diskutil-Screenshots/terminal-diskutil-list-screenshot.jpg" alt="">
+        <p>You can find a list of supported formats by typing the <code>diskutil listFileSystems</code> command - </p>
+        <img src="../../images/Formatting-Disks-Using-diskutil-Screenshots/terminal-diskutil-listFilesystems-screenshot.jpg" alt="">
+        
+  </main>
+</body>
+</html>
