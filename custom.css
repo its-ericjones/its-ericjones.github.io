@@ -1,0 +1,9 @@
+.blog-posts-list {
+    list-style-type: none;
+    text-align: left;
+}
+
+.heading-centered {
+    text-align: center;
+    text-decoration: underline;
+}
