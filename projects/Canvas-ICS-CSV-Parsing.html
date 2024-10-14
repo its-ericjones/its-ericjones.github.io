@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Jones - Projects - Canvas LMS - From ICS to CSV to Things 3</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+<body>
+    <header>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../now.html">Now</a>
+          <a href="../thoughts.html">Thoughts</a>
+          <a href="../notes.html">Notes</a>
+          <a href="../projects.html" class="current">Projects</a>
+          <a href="https://www.instagram.com/its.eric.jones/" target="_blank">Photography</a>
+        </nav>
+        <h1>Projects</h1>
+        <p>A home for old, current, and future projects.</p>
+    </header>
+    <main>
+      <h1>Canvas LMS - <br>From ICS to CSV to Things 3</h1>
+        <p>Date: Oct 14, 2024</p>
+      <span>As always, these seemingly simple script ideas come from repeating the same action over and over to the point where I think, "Man, won't it just be easier if I try and make this a one-click process?" Famous last words...</span>
+      <p>My task manager app of choice these days is <a href="https://culturedcode.com/things/">Things 3.</a> My college, like many others, uses the <a href="https://www.instructure.com/lms-learning-management-system">Canvas Learning Management System</a> to help facilitate the and manage all of their learning materials and student interactions all in one place. This system offers a calendar subscription feed which is great to see all your due dates at a glance, but I would like an easier way to get all my assignments into my task management app in a format that works best for my brain.</p>
+      <p>My current method for doing this is to go into the assignment list page to manually copy and paste the name of the assignment along with the due date, and paste it ask a new task in Things.</p>
+    
+    <strong>My Canvas dashboard:</strong>
+    <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/Canvas-Pixelated.png" alt="">
+    <strong>My Things dashboard:</strong>
+    <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/Things3-Pixelated.png" alt="">
+     <p>With multiple classes and varying amounts of assignments and quizzes, this has become a bit tedious and started to itch the part of my brain where I'm thinking that there has to be a more efficient way to do this. Here's my thought process of how I'm starting to go about making this happen:</p>
+     <ol>
+      <li>Since the calendar subscription file is in the .ics format (which is just plain text), I know that I need a script that can parse through and pull out the information that I deem necessary - only the name of the assignment/quiz and it's due date.</li>
+      <li>I want to keep learning and understanding Python with small projects like these, so I'll go ahead and use this language.</li>
+      <li>Instead of trying to re-invent the wheel from scratch, I found this awesome <a href="https://github.com/albertyw/csv-ical/tree/master">little GitHub repo</a> - huge shout out to <a href="https://github.com/albertyw">Albert Wang</a> - that has an existing Python library for doing just this.</li>
+      <li>Once I have all the information in a .csv file, I wonder if I can use a combination of a bash script and a Things 3 shortcut to get the required data into Things 3.</li>
+     </ol>
+     <h3>Using the existing Python library csv-ical</h3>
+     <p>By utilizing Albert's existing Python library, I was successfully able to get the Canvas .ics subscription file into a usable .csv file.</p>
+     <strong>Python script breakdown</strong>
+     <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/ical-csv-script.png" alt="">
+     <p>This imports the Convert class from the csv_ical module. The Convert class is responsible for handling the conversion between CSV and iCal files.</p>
+      <pre><code>from csv_ical import Convert </code></pre>
+    <p>An instance of the Convert class is created and stored in the variable convert. This instance will be used to call the methods and access the properties of the Convert class for handling file conversion.</p>
+     <pre><code>convert = Convert() </code></pre>
+    <p>This sets the CSV_FILE_LOCATION property of the convert object. It specifies the file path where the CSV file that needs to be created or used is located.</p>
+     <pre><code>convert.CSV_FILE_LOCATION = '/Users/ej/python-playground/ics-csv-conversion/conversions/canvas_calendar.csv' </code></pre>
+    <p>This sets the SAVE_LOCATION property, specifying the location where the iCal file (canvas_calendar.ics) is located or where it will be saved after conversion.</p>
+     <pre><code>convert.SAVE_LOCATION = '/Users/ej/python-playground/ics-csv-conversion/assets/canvas_calendar.ics' </code></pre>
+    <p>This method call instructs the convert object to read the iCal file from the path specified by convert.SAVE_LOCATION - loading the iCal data from the canvas_calendar.ics file.</p>
+     <pre><code>convert.read_ical(convert.SAVE_LOCATION) </code></pre>
+    <p>After reading the iCal file, this method generates a CSV representation of the iCal data. It converts the iCal format to CSV, but it doesn’t save it to a file yet.</p>
+     <pre><code>convert.make_csv() </code></pre>
+    <p>The final line saves the CSV file to the specified location, which was set earlier by convert.CSV_FILE_LOCATION. The converted CSV data from the previous step is now written to /Users/ej/.../canvas_calendar.csv.</p>
+     <pre><code>convert.save_csv(convert.CSV_FILE_LOCATION) </code></pre>
+
+    <h3>Calendar .ics Text File</h3>
+    <p>You can see that when we look at a single calendar event in this text file, there's the name of the assignement appended after "Summary" and the relating due date appended after "DTSTART".</p>
+    <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/ical-screenshot.png" alt="">
+
+    <h3>CSV and Excel View After Conversion</h3>
+    <p>After running the Python script on the .ics file, we can see the name of the assignment and it's related due date in a .csv format.</p>
+    <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/ics-csv-screenshot.png" alt="">
+    <p>When opening the .csv file in Microsoft Excel we have a bit easier of a view of seeing the same information.</p>
+    <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/excel-view-screenshot.png" alt="">
+
+    <h4>Next Up: Parsing the .CSV File & Things 3 Shortcut</h4>
+    <p>Okay, phew! We've got the ball rolling and I'll be back with a write up of how the continuation of this little project is going.</p>
+    <small>Last Updated Oct 14, 2024</small>
+    </main>
+    <footer>
+      <p>This website is fueled by HTML/CSS and ☕.</p>
+</body>
+</html>
