@@ -38,7 +38,7 @@
       <li>Instead of trying to re-invent the wheel from scratch, I found this awesome <a href="https://github.com/albertyw/csv-ical/tree/master">little GitHub repo</a> - huge shout out to <a href="https://github.com/albertyw">Albert Wang</a> - that has an existing Python library for doing just this.</li>
       <li>Once I have all the information in a .csv file, I wonder if I can use a combination of a bash script and a Things 3 shortcut to get the required data into Things 3.</li>
      </ol>
-     <h3>Using the existing Python library csv-ical</h3>
+     <h3>Using the Existing Python Library csv-ical</h3>
      <p>By utilizing Albert's existing Python library, I was successfully able to get the Canvas .ics subscription file into a usable .csv file.</p>
      <strong>Python script breakdown</strong>
      <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/ical-csv-script.png" alt="">
@@ -57,7 +57,7 @@
     <p>The final line saves the CSV file to the specified location, which was set earlier by convert.CSV_FILE_LOCATION. The converted CSV data from the previous step is now written to /Users/ej/.../canvas_calendar.csv.</p>
      <pre><code>convert.save_csv(convert.CSV_FILE_LOCATION) </code></pre>
 
-    <h3>Calendar .ics Text File</h3>
+    <h3>Calendar .ICS Text File</h3>
     <p>You can see that when we look at a single calendar event in this text file, there's the name of the assignment appended after "Summary" and the relating due date appended after "DTSTART".</p>
     <img src="../images/Canvas-ICS-CSV-Parsing-Screenshots/ical-screenshot.png" alt="">
 
